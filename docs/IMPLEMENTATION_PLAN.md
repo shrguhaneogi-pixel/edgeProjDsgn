@@ -24,10 +24,23 @@ flowchart TD
 ### Project 01 — Parametric Pulse (Smart-Contract Cyclone Liquidity)
 - **Concept:** Climate risk interface for storm trajectory, trigger inspection, exposure calculation, and parametric liquidity payout demo.
 - **Signature Interaction:** Interactive coastal storm visualization with timeline scrubber, forecast checkpoint inspector, exposure calculator, and auditable payout rule engine.
-- **Stages:**
-  - Phase 1: Research & Rewrite `DESIGN_NOTES.md`
-  - Phase 2: Architecture & Setup `IMPLEMENTATION_PLAN.md`
-  - Phase 3: Stage A (Interaction Spec) -> Stage B (Signature Prototype) -> Stage C (Deterministic Demo Data) -> Stage D (Complete States) -> Stage E (Design Polish) -> Stage F (Integration & Tests) -> Stage G (Release & README Update).
+- **Architecture & Technical Stack (Phase 2 Verified):**
+  - **Framework & Bundler:** React 19 + TypeScript (`vite`, `@vitejs/plugin-react`). Self-contained build in `parametric-pulse/`.
+  - **Rendering Layer:** HTML5 Canvas 2D storm trajectory scene (`StormCanvas2D`) + SVG interactive asset overlays (`SpatialAssetMarker`).
+  - **State Management:** Custom React reducer (`useReducer`) managing scrubber position, active scenario, asset selection, and payout state machine (`IDLE` -> `EVALUATING` -> `TRIGGERED` -> `LIQUIDITY_LOCKED` -> `PAYOUT_DISPATCHED` -> `CONFIRMED`).
+  - **Data Boundaries & Contracts:** Seeded TypeScript data modules (`src/types/index.ts`, `src/data/demoScenarios.ts`) providing 100% deterministic local data for Category 2 (Non-Qualifying) and Category 4 (Qualifying Landfall) scenarios.
+  - **Run & Validation Commands:**
+    - Dev server: `npm run dev` (Port 3000)
+    - Production build: `npm run build`
+    - Typecheck: `npm run lint` (`tsc --noEmit`)
+- **Phase 3 Build Stage Roadmap:**
+  - Stage A: Interaction Spec & State Model Schema Definition.
+  - Stage B: Canvas 2D Signature Prototype (Storm track, spline interpolation, scrubber).
+  - Stage C: Deterministic Data Engine (Category 2 vs Category 4 scenarios).
+  - Stage D: Complete System States (Loading, Offline Banner, Error, Mobile Stack, ARIA Table Fallback).
+  - Stage E: Design Polish & Cybernetic Visual System.
+  - Stage F: Build Validation, Type Checks, & Integration Sanity.
+  - Stage G: Final README Update, Demo Script, & Verified Commit.
 
 ### Project 02 — The Barter Bridge (Civic Preference AST Engine)
 - **Concept:** Civic participation decision simulator transforming public trade-offs into an explainable AST and priority ranking.
