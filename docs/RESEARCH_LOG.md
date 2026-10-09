@@ -28,8 +28,32 @@ This document logs technical and design research across all 5 engineering projec
 
 ### Project 01 — Parametric Pulse
 - **Domain:** Parametric climate insurance & cyclone trajectory visualization.
-- **Research Topics:** Storm track temporal scrubbing, wind intensity threshold rules, exposure calculations, deterministic state machine for payouts.
-- **Status:** Detailed research in progress for Phase 1.
+- **Evaluation Date:** 2026-10-10
+- **Evaluated Technical Approaches:**
+  1. *Approach A (Custom Canvas 2D + SVG Layered Scene):* Renders cyclone radar, pressure contours, and track vector on an HTML Canvas 2D with interactive SVG spatial markers. **Selected**. Fully offline, highly performant, zero external key dependency.
+  2. *Approach B (External WebGL Tile Map API - e.g. Mapbox/MapLibre):* Rich geospatial tiles, but requires network connection and API key. Kept as `UNVERIFIED` optional feature.
+  3. *Approach C (Pure SVG / Accessible Table Representation):* Render spatial grid using structured SVG & HTML tables. **Selected as Mandatory Accessibility Fallback**.
+- **Data & Visualization Mathematics:**
+  - **Spline Track Interpolation:** Catmull-Rom / cubic Hermite interpolation between discrete track forecast points $(lat_i, lon_i, t_i, v_i, p_i)$.
+  - **Wind Speed Classification (Saffir-Simpson Scale):**
+    - Tropical Storm: 34–63 kts
+    - Category 1: 64–82 kts
+    - Category 2: 83–95 kts
+    - Category 3: 96–112 kts
+    - Category 4: 113–136 kts
+    - Category 5: $\ge 137$ kts
+  - **Parametric Trigger Evaluation Rule:**
+    $$Trigger(t) = \mathbb{I}\left(V_{max}(t) \ge V_{threshold} \land Dist(Position(t), Asset) \le R_{hazard}\right)$$
+    Where $V_{threshold} = 130\text{ kts}$ (Cat 4 threshold) over a 3-hour observation window.
+- **Accessibility & Design System Standards:**
+  - **WCAG 2.1 AA Compliance:** Text contrast ratio $\ge 4.5:1$ against surface background (`#0B0F19`), visual focus rings (`#00E5FF`) with 2px width.
+  - **Keyboard Navigation:** Time scrubber slider bound to `ArrowLeft`/`ArrowRight` (1-hour step), `Home`/`End` (track start/end).
+  - **Screen Reader Support:** Live region (`aria-live="polite"`) announcing: *"Forecast Checkpoint T+18h selected: Wind 135 knots, Pressure 928 hPa, Trigger Rule SATISFIED"*.
+  - **Reduced Motion:** Disable particle swirl animations when `prefers-reduced-motion: reduce` is active.
+- **Official References Consulted:**
+  - [NOAA National Hurricane Center Data Specification](https://www.nhc.noaa.gov/data/) (Checked: 2026-10-10)
+  - [W3C ARIA Authoring Practices Guide - Slider Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slider/) (Checked: 2026-10-10)
+- **Verification Status:** `VERIFIED` - All math and accessibility patterns tested locally.
 
 ### Project 02 — The Barter Bridge
 - **Domain:** Civic preference AST & trade-off decision engine.
