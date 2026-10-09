@@ -30,5 +30,12 @@
 - Baseline test build: N/A (Projects currently contain documentation and design briefs only; no source code or `package.json` built yet).
 - Preservation rule: All 5 project directories, READMEs, and DESIGN_NOTES preserved intact without deletion or dilution.
 
+### Phase 1: Research & Design Specification (Parametric Pulse)
+**Completion Date:** 2026-10-10  
+**Commit:** `efd7a8b74dcec9ab5204003da4ecf696aab52485`  
+- **Research Log Updated:** Evaluated 3 rendering approaches; selected Canvas 2D + SVG layered scene (Primary) and SVG Tabular layout (Accessibility Fallback). Documented NOAA hurricane data math & spline track equations.
+- **Design Notes Rewritten:** [`parametric-pulse/DESIGN_NOTES.md`](file:///c:/project/edgeProjDsgn/parametric-pulse/DESIGN_NOTES.md) rewritten with complete 23-point specification.
+- **Validation Matrix:** Updated Phase 1 for Parametric Pulse to `PASS`.
+
 ---
-**Phase 0 Status:** COMPLETE (Commit `6dbf6dff06fde779099e3be7630ef5b796a93e71`). Waiting for user approval to execute Phase 1 for Project 01 (Parametric Pulse).
+**Phase 1 Status (Parametric Pulse):** COMPLETE. Waiting for user approval to execute Phase 2 for Project 01 (Parametric Pulse).
