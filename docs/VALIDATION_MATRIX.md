@@ -17,7 +17,7 @@ This matrix tracks the validation status of every stage across all five engineer
 |---|---|---|---|---|---|---|---|---|---|---|
 | **01 Parametric Pulse** | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS |
 | **02 Barter Bridge** | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS |
-| **03 Sacrificial Pathways** | PASS | PASS | PASS | PASS | PASS | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
+| **03 Sacrificial Pathways** | PASS | PASS | PASS | PASS | PASS | PASS | PASS | NOT RUN | NOT RUN | NOT RUN |
 | **04 Diagnostic Liquidity** | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
 | **05 Horizon-Scrape** | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
 
@@ -82,7 +82,12 @@ This matrix tracks the validation status of every stage across all five engineer
 - **Deterministic Data & Telemetry Components Built:** Created [`sacrificial-pathways/src/components/FlowTelemetryCard.tsx`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/components/FlowTelemetryCard.tsx) (Manning velocity equation card & broad-crested weir diversion card) and [`sacrificial-pathways/src/components/ConsequenceAnalyzer.tsx`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/components/ConsequenceAnalyzer.tsx) (sector exposure grid, asset valuation diffs, sacrificial trade-off callout).
 - **Workspace Integration:** Updated [`sacrificial-pathways/src/App.tsx`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/App.tsx) mounting telemetry formula cards and consequence analyzer.
 - **Verification Commands Executed:** `npm run lint` (`tsc --noEmit`) PASSED clean; `npm run build` (`vite build`) PASSED clean in 3.86s.
+### Phase 3 Stage D Evidence Summary (03 Sacrificial Pathways)
+- **Accessible Table Fallback Component:** Created [`sacrificial-pathways/src/components/AccessibleElevationTable.tsx`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/components/AccessibleElevationTable.tsx) providing ARIA table structure (`role="table"`), sortable headers, and screen reader live announcements (`aria-live="polite"`).
+- **Complete System States:** Implemented loading skeleton overlay, offline status banner (`navigator.onLine`), runtime error state fallback, and responsive view mode toggling in [`sacrificial-pathways/src/App.tsx`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/App.tsx).
+- **Verification Commands Executed:** `npm run lint` (`tsc --noEmit`) PASSED clean; `npm run build` (`vite build`) PASSED clean in 2.56s.
 - **Result:** `PASS`
+
 
 
 
