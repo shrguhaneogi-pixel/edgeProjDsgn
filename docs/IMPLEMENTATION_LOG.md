@@ -197,7 +197,21 @@
 - **Validation Matrix:** Updated Stage F for Sacrificial Pathways to `PASS`.
 
 ---
-**Project 03 (Sacrificial Pathways) Status:** Stage F complete. Ready for Stage G (Final Release).
+### Phase 3 Stage G: Final Release & Documentation (Sacrificial Pathways)
+**Completion Date:** 2026-10-10  
+- **Stage G Release Summary:**
+  - Stage A (Interaction Spec): Defined state models (`src/types/stateModel.ts`) and pure reducer transition logic (`src/state/appReducer.ts`). Commit `b079908`.
+  - Stage B (Signature Prototype): Built `TerrainCanvas2D.tsx` (2.5D topographic contour surface, sacrificial bypass path `#FF3D00`, flow particles, sector click selection) and `RouteSelector.tsx` (scenarios, gate toggle, discharge slider $Q$, offset slider $h$). Commit `e8e40c9`.
+  - Stage C (Deterministic Data): Built `FlowTelemetryCard.tsx` (Manning velocity formula & broad-crested weir diversion math) and `ConsequenceAnalyzer.tsx` (sector exposure breakdown & sacrificial trade-off rationale). Commit `82f3815`.
+  - Stage D (Complete States): Built `AccessibleElevationTable.tsx` (ARIA table fallback `role="table"`) and loading/offline/error handling in `App.tsx`. Commit `0ec6cae`.
+  - Stage E (Design Polish): Cinematic dark palette (`#0D1117`, `#161B22`, `#FF3D00`), global keyboard shortcuts (`1-3`, `G`, `A`, `R`), and `prefers-reduced-motion` detection. Commit `bcc8cff`.
+  - Stage F (Integration & Testing): Built `flowCalculator.test.ts` unit test suite and `TestRunnerModal.tsx` in-app runner. Commit `b31d6e0`.
+  - Stage G (Release): Rewritten [`sacrificial-pathways/README.md`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/README.md) with complete documentation, architecture, run commands, and 2-minute demonstration script.
+- **Validation Matrix Status:** All stages (Phase 0, Phase 1, Phase 2, Stages A-G) for Project 03 (Sacrificial Pathways) marked **PASS**.
+
+---
+**Project 03 (Sacrificial Pathways) Status:** COMPLETE. Ready for Project 04 (Diagnostic Liquidity).
+
 
 
 
