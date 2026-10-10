@@ -1,147 +1,115 @@
-# Diagnostic Liquidity
-> **Algorithmic Crop Subsidy**  
-> Turn a crop-damage photo into an explainable next step—not an opaque diagnosis or an automatic denial.
+# Diagnostic Liquidity — Algorithmic Crop Subsidy & Mobile Image Triage Engine
 
-![Status](https://img.shields.io/badge/status-design--brief-blueviolet) ![Focus](https://img.shields.io/badge/focus-UI%2FUX-ff69b4)
+> **Project 04** of the Edge Systems Engineering Collection.  
+> A mobile-first agricultural crop-damage intake, explainable lesion triage, and parametric claim settlement prototype built with React 19, TypeScript, Vite, and HTML5 Canvas 2D.
 
-## 1. Product overview
-Diagnostic Liquidity is a crop-damage intake and triage experience for smallholders and cooperative managers. A farmer submits a leaf or crop photo with optional crop, location, and symptom details. A multimodal model proposes a likely issue with confidence and caveats; a structured review workflow turns the result into a mock damage attestation and a pre-qualification record for an insurance or seed-support process. The interface makes the evidence, uncertainty, and claim status understandable to users with different levels of technical literacy.
+---
 
-## 2. Problem and opportunity
-Farmers may have limited access to timely crop diagnostics and may struggle to document damage for support or insurance. A photo-based classifier can speed up triage, but image quality, regional disease variation, and lookalike symptoms mean that a model output should not be presented as a definitive diagnosis or as automatic proof of financial eligibility.
+## 🌟 Overview & Key Capabilities
 
-## 3. Target users
-- Smallholder farmers submitting crop concerns
-- Cooperative field officers reviewing multiple submissions
-- Agricultural advisors validating suggested diagnoses
-- Micro-insurance or seed-support administrators tracking case status
+**Diagnostic Liquidity** solves agricultural crop-damage assessment latency by pairing mobile photo triage with an explainable AI confidence score ($C_{score}$) and algorithmic parametric claim settlement ($P_{subsidy}$).
 
-## 4. Experience narrative / key user journey
-### 01 · Start a crop report
-A mobile-first screen asks the farmer to photograph a leaf or plant and shows examples of useful versus poor images. The form uses short labels, large controls, and optional voice-friendly descriptions.
+### Key Prototype Features
+1. **Case Intake Selector (`CropPhotoSelector.tsx`)**:
+   - Deterministic case switching between Maize Northern Leaf Blight, Wheat Stem Rust, and Healthy Soybean.
+   - Live estimated payout displays and risk severity badges.
+2. **HTML5 Canvas 2D Lesion Inspector (`LesionInspectorCanvas.tsx`)**:
+   - Interactive leaf viewport with procedural vein and necrotic lesion rendering.
+   - Neon magenta (`#FF00FF`) AI bounding box overlays and target reticle corners.
+   - Thermal Heatmap overlay mode (`showHeatmap`) for damage density mapping.
+   - Real-time laser scanning line animation (`isScanAnimating`).
+   - Tracking 2.5x magnification zoom lens previewing micro-level leaf pixel structure.
+3. **Explainable AI Confidence Engine (`DiagnosticConfidenceCard.tsx`)**:
+   - Transparent $C_{score}$ calculation breakdown based on verified pathological symptoms.
+   - Interactive Confidence Threshold Scrubber (0% to 100%) for real-time bounding box filtering.
+4. **Parametric Claim Settlement Rail (`ClaimSettlementCard.tsx`)**:
+   - Instant calculation of parametric subsidy payout ($P_{subsidy}$) using $D_{ratio}$ damage ratio and $D_{threshold}$ eligibility threshold (15%).
+   - Interactive claim status stepper (`DRAFT` → `INTAKE_SUBMITTED` → `DIAGNOSTIC_EVALUATED` → `ADJUDICATION_PENDING` → `SUBSIDY_DISPATCHED` → `SETTLED`).
+5. **Accessible ARIA Report View (`AccessibleCropCaseReport.tsx`)**:
+   - WCAG 2.1 AA screen reader fallback view with semantic `<table>`, `<dl>`, and live region announcements.
+6. **In-App Unit Test Suite Runner (`TestRunnerModal.tsx`)**:
+   - Interactive test runner modal verifying damage ratio math, confidence scoring, parametric formulas, and state reducer transitions.
 
-### 02 · Add context
-The farmer selects crop type, approximate location, planting stage, and visible symptoms. Explain why each field helps and mark optional fields clearly.
+---
 
-### 03 · Review the image
-A preview lets the user retake, crop, or remove the image before submission. Upload progress, offline/retry errors, and file constraints are explicit.
+## 📐 Mathematical Models & Formulas
 
-### 04 · See the AI assessment
-The result screen shows the suggested issue, confidence band, visual evidence or symptom matches where available, and alternative possibilities. It includes a plain-language warning that the result is a preliminary assessment.
+### 1. Crop Damage Severity Ratio ($D_{ratio}$)
+$$D_{ratio} = \min\left(1.0, \frac{\sum \text{Area}(\text{Lesion Box}_i)}{0.45 \times \text{Total Canvas Area}}\right) \times 100\%$$
 
-### 05 · Create a case
-The user confirms the information and receives a case ID. The status is ‘submitted’, ‘needs review’, or ‘reviewed’—not ‘approved for payout’ unless a separate authorized process has made that decision.
+### 2. Explainable AI Diagnostic Confidence Score ($C_{score}$)
+$$C_{score} = \frac{1}{N} \sum_{i=1}^{N} \text{MatchScore}_i \quad \text{for all matched symptoms } s_i$$
 
-### 06 · Cooperative overview
-Managers see incoming cases, location clusters, crop/disease filters, image thumbnails, and review status. Opening a case shows evidence, model version, timestamps, and a human review checklist.
+### 3. Parametric Crop Subsidy Payout ($P_{subsidy}$)
+$$P_{subsidy} = \begin{cases} 
+0, & \text{if } D_{ratio} < D_{threshold} \\
+\text{BaseRate} \times \text{Hectares} \times \left(\frac{D_{ratio} - D_{threshold}}{1 - D_{threshold}}\right), & \text{if } D_{ratio} \ge D_{threshold}
+\end{cases}$$
 
-### 07 · Demonstrate the support workflow
-A mock attestation token or claim record is created in demo mode. The UI explicitly distinguishes a database case record, a simulated token, and any real on-chain transaction.
+---
 
-## 5. Art direction and visual identity
-A humane field-work tool rather than a fintech terminal. Use warm paper/soil neutrals, botanical green as a supportive accent, high-quality crop imagery, clear cards, and strong typography. Keep the farmer experience calm and linear; the cooperative dashboard can be denser. Magenta may be retained as the source concept's brand accent, but use it sparingly for key actions or selected states rather than every panel.
+## 🎨 Design System Tokens (Botanical Field Palette)
 
-### Design tokens to establish
-- **Accent:** `#FF00FF` (use as a focused signal, not a substitute for accessible status labels).
-- **Typography:** expressive display face for headlines paired with a highly legible UI sans; use monospace only for IDs, timestamps, technical values, and system labels.
-- **Surface system:** define background, raised surface, border, muted text, focus ring, success, warning, and error tokens before building screens.
-- **Iconography:** one consistent line-icon family; icons supplement labels rather than replacing them.
-- **Data visualization:** every chart or spatial layer must have a legend, units, source, timestamp, and a non-visual or tabular equivalent where feasible.
+- **Canvas Dark Base**: `#060A07` (Deep Nitrogen Dark), `#0F1410` (Soil Charcoal), `#121A14` (Canopy Surface)
+- **Supportive Botanical Green**: `#00E676` (Photosynthetic Green, primary accent & success)
+- **Harvest Gold**: `#FFAB00` (Mature Crop Amber, moderate severity & heatmaps)
+- **Lesion Magenta / Red**: `#FF00FF` / `#FF2A6D` (Necrotic Highlight, AI bounding boxes & critical alerts)
+- **Borders & Grid Lines**: `#2D3B30` / `#1F2C21`
 
-## 6. Layout and responsive behavior
-Farmer mobile flow: single-column, one task per step, image preview near the top, sticky primary action, and clear recovery controls. Manager desktop: queue/table on the left, map or case distribution summary above, selected-case detail drawer on the right. Provide list view even when a map is available.
+---
 
-## 7. Signature UI components
-- Camera/upload dropzone with example image guidance
-- Crop/context form with optional fields
-- Image preview, retake, and crop affordances
-- Assessment result card with confidence and caveats
-- Alternative diagnosis / ‘not enough evidence’ state
-- Case ID and status timeline
-- Cooperative case queue with filters and search
-- Map-based aggregation only when location precision is appropriate
-- Human review checklist and decision notes
-- Mock attestation/claim record with explicit demo label
+## ⌨️ Global Keyboard Navigation Shortcuts
 
-## 8. Motion and interaction principles
-- Upload progress should be accurate and never imply the model is still running when it has failed.
-- Reveal the assessment in a calm staged sequence: status, suggested issue, confidence, next step.
-- Use subtle clustering transitions on the manager dashboard, but keep data labels stable.
-- Respect reduced-motion preferences and avoid alarming animations for disease results.
+| Key Shortcut | Action Description |
+|---|---|
+| <kbd>1</kbd> | Select **Maize Northern Leaf Blight** Case ($3,230 USD) |
+| <kbd>2</kbd> | Select **Wheat Stem Rust** Case ($7,118 USD) |
+| <kbd>3</kbd> | Select **Healthy Soybean** Case ($0 USD) |
+| <kbd>S</kbd> | Toggle **Laser Scan Line Animation** |
+| <kbd>B</kbd> | Toggle **AI Bounding Boxes Overlay** |
+| <kbd>H</kbd> | Toggle **Thermal Damage Heatmap** |
+| <kbd>A</kbd> | Toggle **Accessible ARIA Report View** |
+| <kbd>T</kbd> | Open **In-App Unit Test Suite Runner** |
+| <kbd>R</kbd> | Reset **Claim State & Parameters** |
 
-## 9. Accessibility and inclusive design
-- Use plain language, icon-plus-text labels, and large touch targets.
-- Do not rely on image-only instructions; provide text guidance.
-- Support low-bandwidth states, retries, and clear upload errors.
-- Do not show precise farmer locations to all dashboard users by default.
-- Make the uncertainty and human-review path at least as prominent as the suggested diagnosis.
+---
 
-## 10. MVP scope
-- Photo upload with a sample-image path for demo reliability
-- One multimodal classification call or a clearly labelled deterministic mock
-- Result page with confidence/caveat and next steps
-- Case ID and case-status workflow
-- Manager dashboard with seeded cases and filters
-- Mock claim/attestation object; no real financial decisioning
+## 🚀 Quick Start & Running Commands
 
-## 11. Success criteria
-- A farmer understands the result and the next action without needing to interpret ML jargon.
-- A manager can find and review a case quickly.
-- Low-confidence or ambiguous results route to human review rather than false certainty.
-- The demo works without an external model API and labels fallback results honestly.
+```bash
+# Navigate to project directory
+cd diagnostic-liquidity
 
-## 12. Safety, trust, and product risks
-- Image-based diagnosis can be wrong; do not prescribe treatment or determine eligibility solely from a model output.
-- Confidence scores may be poorly calibrated; explain them as model estimates, not probability of truth unless validated.
-- GPS and farm data are sensitive; minimize collection and restrict access.
-- Keep mock claim IDs and tokens clearly distinct from real insurance approvals or blockchain assets.
+# Install dependencies (Node.js >= 18)
+npm install
 
-## 13. Proposed technology direction
-Next.js / React / Tailwind CSS / accessible component primitives; FastAPI + Pydantic for validated image metadata and case contracts; Gemini Flash multimodal as an optional diagnostic provider; Supabase for cases and storage; Docker/CI. Keep model-provider code behind a replaceable interface and ship a seeded demo mode.
+# Run Vite local development server (Port 3003)
+npm run dev
 
-> Technology names above are proposed directions inherited from or expanded from the supplied concept. Verify package versions and provider capabilities against current official documentation before implementation. Treat live integrations as optional until the core UX works with deterministic demo data.
+# Execute TypeScript type checking
+npm run lint
 
-## 14. Suggested repository structure
-```text
-app/farmer/ · app/cooperative/ · components/image-intake/ · components/assessment-card/ · components/case-queue/ · lib/diagnosis-provider/ · lib/cases/ · data/demo-cases.json · docs/privacy.md · docs/model-evaluation.md
+# Build production bundle
+npm run build
 ```
 
-## 15. Suggested screen inventory
-1. **Overview / landing:** communicate the problem, current scenario, and primary action immediately.
-2. **Primary workspace:** the main map, canvas, questionnaire, or intake experience.
-3. **Detail / inspector:** explain a selected object, result, rule, or observation.
-4. **History / comparison:** compare events, scenarios, or observations over time.
-5. **Methodology / trust:** data sources, assumptions, limitations, privacy, and demo/live status.
-6. **Responsive / empty / error states:** design these intentionally, not as afterthoughts.
+---
 
-## 16. States that must be designed
-- Initial loading and first-use guidance
-- Empty state with a useful next action
-- Successful completion
-- Partial data / stale data
-- Validation error with recovery path
-- External API unavailable
-- Offline or slow connection where relevant
-- Demo data versus live data
-- Keyboard focus, disabled controls, and reduced motion
+## 🎬 2-Minute Demonstration Script
 
-## 17. Two-minute demo script
-1. State the real-world problem and introduce the primary workspace.
-2. Perform one high-signal interaction (scrub the storm, submit a civic choice, compare a flood route, review a crop image, or scrub observations).
-3. Open the inspector to show how the output was produced and what its limits are.
-4. Trigger a deterministic demo scenario and show the resulting state/history.
-5. Close with the trust boundary: what is live, what is simulated, and what the prototype does not claim to do.
-
-## 18. Definition of design-ready
-- [ ] One-sentence product promise and target user are clear.
-- [ ] Low-fidelity flow covers the happy path and error/recovery paths.
-- [ ] Desktop and mobile layouts are mapped.
-- [ ] Color, typography, spacing, border, and motion tokens are documented.
-- [ ] Every data visualization has a legend and clear semantics.
-- [ ] Loading, empty, error, fallback, and demo states are specified.
-- [ ] Accessibility review includes keyboard, contrast, reduced motion, and non-visual alternatives.
-- [ ] The demo script can be completed without relying on a flaky live API.
-
-## 19. Source concept and interpretation
-The original uploaded portfolio describes **Diagnostic Liquidity** as: Diagnostic Liquidity is a crop-damage intake and triage experience for smallholders and cooperative managers. A farmer submits a leaf or crop photo with optional crop, location, and symptom details. A multimodal model proposes a likely issue with confidence and caveats; a structured review workflow turns the result into a mock damage attestation and a pre-qualification record for an insurance or seed-support process. The interface makes the evidence, uncertainty, and claim status understandable to users with different levels of technical literacy.
-This brief preserves the concept while expanding the UI/UX direction. Specific layouts, components, interaction patterns, and safety guidance are design recommendations, not claims that the original file already implemented them.
+1. **Launch Prototype**: Run `npm run dev` and open `http://localhost:3003`.
+2. **Case Intake**: Click on the **Maize Northern Leaf Blight** case card (Joseph K. Mwangi, 10 ha).
+3. **HTML5 Canvas Inspection**:
+   - Hover mouse over the leaf surface to view the **2.5x Zoom Magnifier Lens** in the top-right corner.
+   - Click on bounding box `box-2` to highlight the necrotic foliar patch.
+   - Click **🔥 Heatmap** in the top toolbar (or press <kbd>H</kbd>) to observe damage intensity gradient.
+   - Click **🛑 Pause Scan** (or press <kbd>S</kbd>) to freeze laser scanning.
+4. **Explainable AI Confidence Engine**:
+   - Observe the $C_{score}$ gauge at **92% Confidence**.
+   - Drag the **Confidence Threshold Filter** slider to `90%` to filter out low-confidence symptom matches.
+5. **Parametric Claim Settlement Rail**:
+   - Inspect the parametric formula card showing $D_{ratio} = 38\%$, $D_{threshold} = 15\%$, and calculated liquidity payout of **$2,300 USD**.
+   - Click **➡️ Advance to Next Step** to cycle through claim lifecycle (`ADJUDICATION_PENDING` → `SUBSIDY_DISPATCHED` → `SETTLED`).
+6. **In-App Testing & Accessibility**:
+   - Press <kbd>T</kbd> to open the **In-App Unit Test Runner** modal and verify all 6 test assertions pass clean.
+   - Press <kbd>A</kbd> to toggle the **Accessible ARIA Report View** for screen reader verification.
