@@ -17,7 +17,7 @@ This matrix tracks the validation status of every stage across all five engineer
 |---|---|---|---|---|---|---|---|---|---|---|
 | **01 Parametric Pulse** | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS |
 | **02 Barter Bridge** | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS |
-| **03 Sacrificial Pathways** | PASS | PASS | PASS | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
+| **03 Sacrificial Pathways** | PASS | PASS | PASS | PASS | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
 | **04 Diagnostic Liquidity** | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
 | **05 Horizon-Scrape** | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
 
@@ -74,7 +74,12 @@ This matrix tracks the validation status of every stage across all five engineer
 - **Hydraulic Flow Utilities & Reducer:** Built [`sacrificial-pathways/src/utils/flowCalculator.ts`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/utils/flowCalculator.ts) (Manning velocity, sacrificial weir diversion flow, sector risk valuation) and [`sacrificial-pathways/src/state/appReducer.ts`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/state/appReducer.ts) with pure action handlers (`SELECT_SCENARIO`, `TOGGLE_SACRIFICIAL_GATE`, `SET_DISCHARGE_RATE`, `SET_WATER_LEVEL_OFFSET`, `SELECT_SECTOR`, `TOGGLE_ACCESSIBILITY_VIEW`, `TOGGLE_ANIMATION`, `RESET_SIMULATION`).
 - **Deterministic Data Scenarios:** Created [`sacrificial-pathways/src/data/demoTerrainScenarios.ts`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/data/demoTerrainScenarios.ts) defining 4 municipal sectors and 3 deterministic flood scenarios.
 - **Verification Commands Executed:** `npm run lint` (`tsc --noEmit`) PASSED clean; `npm run build` (`vite build`) PASSED clean in 4.62s.
+### Phase 3 Stage B Evidence Summary (03 Sacrificial Pathways)
+- **Signature Prototype Components Built:** Created [`sacrificial-pathways/src/components/TerrainCanvas2D.tsx`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/components/TerrainCanvas2D.tsx) (HTML5 Canvas 2D topographic contour surface, animated flow particles, sacrificial gate path `#FF3D00`, click selection) and [`sacrificial-pathways/src/components/RouteSelector.tsx`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/components/RouteSelector.tsx) (scenario buttons, gate toggle, discharge slider $Q$, offset slider $h$).
+- **App Main Workspace:** Updated [`sacrificial-pathways/src/App.tsx`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/App.tsx) mounting canvas, telemetry summary bar, route controls, and sector inspector.
+- **Verification Commands Executed:** `npm run lint` (`tsc --noEmit`) PASSED clean; `npm run build` (`vite build`) PASSED clean in 2.87s.
 - **Result:** `PASS`
+
 
 
 
