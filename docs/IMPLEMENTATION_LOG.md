@@ -187,7 +187,17 @@
 - **Validation Matrix:** Updated Stage E for Sacrificial Pathways to `PASS`.
 
 ---
-**Project 03 (Sacrificial Pathways) Status:** Stage E complete. Ready for Stage F (Integration & Testing).
+### Phase 3 Stage F: Integration & Unit Testing (Sacrificial Pathways)
+**Completion Date:** 2026-10-10  
+- **Unit Testing & Test Modal:**
+  - [`sacrificial-pathways/src/utils/flowCalculator.test.ts`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/utils/flowCalculator.test.ts): Programmatic unit test suite verifying Manning's velocity equation, weir channel diversion flow, sector risk scoring, and depth reduction deltas.
+  - [`sacrificial-pathways/src/components/TestRunnerModal.tsx`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/components/TestRunnerModal.tsx): Interactive in-app test runner modal connected to top action bar button and shortcut <kbd>T</kbd>.
+- **Verification Commands Executed:** `npm run lint` (`tsc --noEmit`) PASSED clean; `npm run build` (`vite build`) PASSED clean in 3.11s.
+- **Validation Matrix:** Updated Stage F for Sacrificial Pathways to `PASS`.
+
+---
+**Project 03 (Sacrificial Pathways) Status:** Stage F complete. Ready for Stage G (Final Release).
+
 
 
 

@@ -4,6 +4,7 @@ import { ConsequenceAnalyzer } from './components/ConsequenceAnalyzer';
 import { FlowTelemetryCard } from './components/FlowTelemetryCard';
 import { RouteSelector } from './components/RouteSelector';
 import { TerrainCanvas2D } from './components/TerrainCanvas2D';
+import { TestRunnerModal } from './components/TestRunnerModal';
 import { appReducer, createInitialState } from './state/appReducer';
 
 export default function App() {
@@ -11,6 +12,7 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isOffline, setIsOffline] = useState(!navigator.onLine);
   const [hasError, setHasError] = useState(false);
+  const [isTestModalOpen, setIsTestModalOpen] = useState(false);
 
   const { selectedSectorId, sectorRisks, telemetry, gateStatus, dischargeM3PerSec } = state;
   const selectedSector = sectorRisks.find(r => r.sectorId === selectedSectorId);
@@ -50,6 +52,8 @@ export default function App() {
         dispatch({ type: 'TOGGLE_ACCESSIBILITY_VIEW' });
       } else if (e.code === 'KeyR') {
         dispatch({ type: 'RESET_SIMULATION' });
+      } else if (e.code === 'KeyT') {
+        setIsTestModalOpen(prev => !prev);
       }
     };
 
@@ -100,7 +104,22 @@ export default function App() {
             Cinematic hydraulic flood diversion command center & risk consequence simulator.
           </p>
         </div>
-        <div style={{ textAlign: 'right' }}>
+        <div style={{ textAlign: 'right', display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+          <button
+            onClick={() => setIsTestModalOpen(true)}
+            style={{
+              padding: '0.5rem 0.85rem',
+              background: '#0D1117',
+              border: '1px solid #FF3D00',
+              color: '#FF3D00',
+              borderRadius: '6px',
+              cursor: 'pointer',
+              fontSize: '0.8rem',
+              fontWeight: 600
+            }}
+          >
+            Run Unit Tests (Key: T)
+          </button>
           <button
             onClick={() => dispatch({ type: 'TOGGLE_ACCESSIBILITY_VIEW' })}
             style={{
@@ -111,8 +130,7 @@ export default function App() {
               borderRadius: '6px',
               cursor: 'pointer',
               fontSize: '0.8rem',
-              fontWeight: 600,
-              outlineOffset: '2px'
+              fontWeight: 600
             }}
           >
             {state.isAccessibilityView ? 'Switch to Canvas View (Key: A)' : 'Accessible Table Fallback (Key: A)'}
@@ -125,8 +143,12 @@ export default function App() {
         <span><kbd style={{ background: '#0D1117', border: '1px solid #30363D', padding: '1px 4px', borderRadius: '3px', color: '#F0F6FC' }}>1-3</kbd> Select Scenarios</span>
         <span><kbd style={{ background: '#0D1117', border: '1px solid #30363D', padding: '1px 4px', borderRadius: '3px', color: '#FF3D00' }}>G</kbd> Toggle Sacrificial Gate</span>
         <span><kbd style={{ background: '#0D1117', border: '1px solid #30363D', padding: '1px 4px', borderRadius: '3px', color: '#00A3FF' }}>A</kbd> Toggle Accessible Table</span>
+        <span><kbd style={{ background: '#0D1117', border: '1px solid #30363D', padding: '1px 4px', borderRadius: '3px', color: '#00E676' }}>T</kbd> Run Unit Tests</span>
         <span><kbd style={{ background: '#0D1117', border: '1px solid #30363D', padding: '1px 4px', borderRadius: '3px', color: '#8B949E' }}>R</kbd> Reset Simulation</span>
       </div>
+
+      {/* Test Runner Modal */}
+      <TestRunnerModal isOpen={isTestModalOpen} onClose={() => setIsTestModalOpen(false)} />
 
       {/* Loading Skeleton */}
       {isLoading ? (

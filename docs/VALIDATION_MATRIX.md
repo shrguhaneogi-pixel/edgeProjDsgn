@@ -17,7 +17,7 @@ This matrix tracks the validation status of every stage across all five engineer
 |---|---|---|---|---|---|---|---|---|---|---|
 | **01 Parametric Pulse** | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS |
 | **02 Barter Bridge** | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS |
-| **03 Sacrificial Pathways** | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | NOT RUN | NOT RUN |
+| **03 Sacrificial Pathways** | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | NOT RUN |
 | **04 Diagnostic Liquidity** | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
 | **05 Horizon-Scrape** | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
 
@@ -89,7 +89,11 @@ This matrix tracks the validation status of every stage across all five engineer
 ### Phase 3 Stage E Evidence Summary (03 Sacrificial Pathways)
 - **Design Polish & Accessibility:** Polished cinematic terrain aesthetic (`#0D1117`, `#FF3D00`, `#00A3FF`). Added global keyboard navigation shortcuts (`1-3`, `G`, `A`, `R`) with legend bar in [`sacrificial-pathways/src/App.tsx`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/App.tsx). Configured `prefers-reduced-motion: reduce` listener to auto-disable canvas flow animation when requested.
 - **Verification Commands Executed:** `npm run lint` (`tsc --noEmit`) PASSED clean; `npm run build` (`vite build`) PASSED clean in 2.50s.
+### Phase 3 Stage F Evidence Summary (03 Sacrificial Pathways)
+- **Unit Test Suite & In-App Runner Built:** Created [`sacrificial-pathways/src/utils/flowCalculator.test.ts`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/utils/flowCalculator.test.ts) (5 unit test assertions covering Manning's velocity $V$, weir diversion flow $Q_{sacrificial}$, sector risk scoring, and depth reduction deltas) and [`sacrificial-pathways/src/components/TestRunnerModal.tsx`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/components/TestRunnerModal.tsx) (in-app modal test runner).
+- **Verification Commands Executed:** `npm run lint` (`tsc --noEmit`) PASSED clean; `npm run build` (`vite build`) PASSED clean in 3.11s.
 - **Result:** `PASS`
+
 
 
 
