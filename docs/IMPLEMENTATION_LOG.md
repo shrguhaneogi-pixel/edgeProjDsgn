@@ -157,6 +157,7 @@
 ---
 ### Phase 3 Stage C: Deterministic Data Engine & Formula Cards (Sacrificial Pathways)
 **Completion Date:** 2026-10-10  
+**Commit:** `82f3815`  
 - **Formula & Consequence Components:**
   - [`sacrificial-pathways/src/components/FlowTelemetryCard.tsx`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/components/FlowTelemetryCard.tsx): Formula breakdown card for Manning's Kinematic Velocity $V = \frac{1}{n} R_h^{2/3} S_0^{1/2}$ and Broad-Crested Weir Diversion Flow $Q_{sacrificial} = C_d \cdot b \cdot (h_{river} - h_{gate})^{3/2}$.
   - [`sacrificial-pathways/src/components/ConsequenceAnalyzer.tsx`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/components/ConsequenceAnalyzer.tsx): Sector exposure grid displaying asset valuation diffs ($USD), risk percentage, status badges, and sacrificial channel trade-off callout.
