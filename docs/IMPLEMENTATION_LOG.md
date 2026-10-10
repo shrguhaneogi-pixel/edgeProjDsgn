@@ -199,6 +199,7 @@
 ---
 ### Phase 3 Stage G: Final Release & Documentation (Sacrificial Pathways)
 **Completion Date:** 2026-10-10  
+**Final Release Commit:** `0d44684`  
 - **Stage G Release Summary:**
   - Stage A (Interaction Spec): Defined state models (`src/types/stateModel.ts`) and pure reducer transition logic (`src/state/appReducer.ts`). Commit `b079908`.
   - Stage B (Signature Prototype): Built `TerrainCanvas2D.tsx` (2.5D topographic contour surface, sacrificial bypass path `#FF3D00`, flow particles, sector click selection) and `RouteSelector.tsx` (scenarios, gate toggle, discharge slider $Q$, offset slider $h$). Commit `e8e40c9`.
