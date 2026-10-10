@@ -1,4 +1,4 @@
-import { useReducer, useEffect } from 'react';
+import { useState, useReducer, useEffect } from 'react';
 import { initialAppState, appReducer } from './state/appReducer';
 import { demoScenarios } from './data/demoScenarios';
 import { interpolateTrackPoint } from './utils/geo';
@@ -9,9 +9,11 @@ import { TelemetryInspector } from './components/TelemetryInspector';
 import { TriggerRuleCard } from './components/TriggerRuleCard';
 import { PayoutStateMachine } from './components/PayoutStateMachine';
 import { AccessibleTableFallback } from './components/AccessibleTableFallback';
+import { TestRunnerModal } from './components/TestRunnerModal';
 import { AlertCircle } from 'lucide-react';
 
 export default function App() {
+  const [isTestModalOpen, setIsTestModalOpen] = useState(false);
   const [state, dispatch] = useReducer(appReducer, {
     ...initialAppState,
     scenarios: demoScenarios,
@@ -69,6 +71,7 @@ export default function App() {
         onSelectScenario={(id) => dispatch({ type: 'SET_SCENARIO', payload: id })}
         viewMode={state.viewMode}
         onSetViewMode={(mode) => dispatch({ type: 'SET_VIEW_MODE', payload: mode })}
+        onOpenTestRunner={() => setIsTestModalOpen(true)}
       />
 
       {/* Main Content View */}
@@ -148,6 +151,9 @@ export default function App() {
       <footer style={{ background: '#0B0F19', borderTop: '1px solid #1E293B', padding: '16px 24px', textAlign: 'center', fontSize: '0.75rem', color: '#64748B', fontFamily: 'JetBrains Mono, monospace' }}>
         PARAMETRIC PULSE v1.0 // RE-DESIGN VERIFIED // NO PAID EXTERNAL APIS REQUIRED
       </footer>
+
+      {/* Interactive Unit Test Runner Modal */}
+      <TestRunnerModal isOpen={isTestModalOpen} onClose={() => setIsTestModalOpen(false)} />
     </div>
   );
 }

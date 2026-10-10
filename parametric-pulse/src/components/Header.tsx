@@ -1,7 +1,7 @@
 import React from 'react';
 import { CycloneScenario, ViewMode } from '../types';
 import { ScenarioSwitcher } from './ScenarioSwitcher';
-import { Activity, ShieldCheck, FileText, LayoutDashboard } from 'lucide-react';
+import { Activity, ShieldCheck, FileText, LayoutDashboard, FlaskConical } from 'lucide-react';
 
 interface HeaderProps {
   scenarios: CycloneScenario[];
@@ -9,6 +9,7 @@ interface HeaderProps {
   onSelectScenario: (id: string) => void;
   viewMode: ViewMode;
   onSetViewMode: (mode: ViewMode) => void;
+  onOpenTestRunner?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -17,6 +18,7 @@ export const Header: React.FC<HeaderProps> = ({
   onSelectScenario,
   viewMode,
   onSetViewMode,
+  onOpenTestRunner,
 }) => {
   return (
     <header
@@ -113,6 +115,28 @@ export const Header: React.FC<HeaderProps> = ({
             <FileText size={14} />
             ARIA TABLE
           </button>
+
+          {onOpenTestRunner && (
+            <button
+              onClick={onOpenTestRunner}
+              style={{
+                background: '#06080F',
+                color: '#10B981',
+                border: '1px solid #10B981',
+                borderRadius: '3px',
+                padding: '6px 10px',
+                fontSize: '0.75rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4px',
+                cursor: 'pointer',
+                fontWeight: 600,
+              }}
+            >
+              <FlaskConical size={14} />
+              RUN TESTS
+            </button>
+          )}
         </div>
       </div>
     </header>
