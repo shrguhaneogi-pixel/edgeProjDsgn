@@ -18,7 +18,7 @@ This matrix tracks the validation status of every stage across all five engineer
 | **01 Parametric Pulse** | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS |
 | **02 Barter Bridge** | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS |
 | **03 Sacrificial Pathways** | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS |
-| **04 Diagnostic Liquidity** | PASS | PASS | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
+| **04 Diagnostic Liquidity** | PASS | PASS | PASS | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
 | **05 Horizon-Scrape** | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
 
 ---
@@ -102,6 +102,13 @@ This matrix tracks the validation status of every stage across all five engineer
 - **Architecture Defined:** Detailed technical architecture in `docs/IMPLEMENTATION_PLAN.md` (React 19 + TypeScript + Vite, HTML5 Canvas 2D Crop Image Inspector, typed claim data contracts).
 - **Scaffolded & Installed:** Initialized `diagnostic-liquidity/package.json`, `tsconfig.json`, `vite.config.ts`, `index.html`, `.gitignore`, `src/types/index.ts`, `src/main.tsx`, and `src/App.tsx`. Successfully ran `npm install` (71 packages audited).
 - **Verification Commands Executed:** `npm run lint` (`tsc --noEmit`) PASSED clean; `npm run build` (`vite build`) PASSED clean in 19.08s.
+- **Result:** `PASS`
+
+### Phase 3 Stage A Evidence Summary (04 Diagnostic Liquidity)
+- **State Models & Schemas Defined:** Created [`diagnostic-liquidity/src/types/stateModel.ts`](file:///c:/project/edgeProjDsgn/diagnostic-liquidity/src/types/stateModel.ts) and [`diagnostic-liquidity/src/types/index.ts`](file:///c:/project/edgeProjDsgn/diagnostic-liquidity/src/types/index.ts) defining `CropPhotoSample`, `BoundingBox`, `SymptomMatch`, `ClaimStatus`, `DiagnosticAssessmentState`, `AppState`, and `AppAction`.
+- **Diagnostic Math Utilities & Reducer:** Built [`diagnostic-liquidity/src/utils/diagnosticEvaluator.ts`](file:///c:/project/edgeProjDsgn/diagnostic-liquidity/src/utils/diagnosticEvaluator.ts) ($D_{ratio}$ crop damage ratio, explainable $C_{score}$ confidence scoring, $P_{subsidy}$ parametric payout calculation) and [`diagnostic-liquidity/src/state/appReducer.ts`](file:///c:/project/edgeProjDsgn/diagnostic-liquidity/src/state/appReducer.ts) with pure action handlers (`SELECT_SAMPLE`, `ADVANCE_CLAIM_STATUS`, `SET_CLAIM_STATUS`, `SET_CONFIDENCE_FILTER`, `TOGGLE_BOUNDING_BOXES`, `TOGGLE_HEATMAP`, `SELECT_BOUNDING_BOX`, `TOGGLE_ACCESSIBILITY_VIEW`, `TOGGLE_SCAN_ANIMATION`, `RESET_CLAIM_STATE`).
+- **Deterministic Crop Samples:** Created [`diagnostic-liquidity/src/data/demoCropData.ts`](file:///c:/project/edgeProjDsgn/diagnostic-liquidity/src/data/demoCropData.ts) defining 3 real-world agricultural crop cases (Maize Northern Leaf Blight $3,230 USD, Wheat Stem Rust $7,118 USD, Healthy Soy $0 USD).
+- **Verification Commands Executed:** `npm run lint` (`tsc --noEmit`) PASSED clean; `npm run build` (`vite build`) PASSED clean in 9.23s.
 - **Result:** `PASS`
 
 
