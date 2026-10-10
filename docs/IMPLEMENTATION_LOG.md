@@ -146,6 +146,7 @@
 ---
 ### Phase 3 Stage B: Signature Prototype Components (Sacrificial Pathways)
 **Completion Date:** 2026-10-10  
+**Commit:** `e8e40c9`  
 - **Signature Canvas & Controls:**
   - [`sacrificial-pathways/src/components/TerrainCanvas2D.tsx`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/components/TerrainCanvas2D.tsx): Custom HTML5 Canvas 2D terrain elevation visualizer rendering 2.5D topographic contour lines, main river channel, sacrificial bypass channel (`#FF3D00`), flow particle animation, sector risk polygons, and interactive sector selection.
   - [`sacrificial-pathways/src/components/RouteSelector.tsx`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/components/RouteSelector.tsx): Hydraulic scenario selector, sacrificial gate toggle button (`#FF3D00`), peak surge discharge slider $Q$, datum offset slider $h$, flow animation toggle, and reset button.
