@@ -18,7 +18,7 @@ This matrix tracks the validation status of every stage across all five engineer
 | **01 Parametric Pulse** | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS |
 | **02 Barter Bridge** | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS |
 | **03 Sacrificial Pathways** | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS |
-| **04 Diagnostic Liquidity** | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
+| **04 Diagnostic Liquidity** | PASS | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
 | **05 Horizon-Scrape** | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
 
 ---
@@ -95,7 +95,11 @@ This matrix tracks the validation status of every stage across all five engineer
 ### Phase 3 Stage G Evidence Summary (03 Sacrificial Pathways)
 - **Documentation & Release:** Rewritten [`sacrificial-pathways/README.md`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/README.md) detailing project features, Manning flow math, weir diversion physics, visual design tokens (`#0D1117`, `#FF3D00`, `#00A3FF`), run commands, and 2-minute demonstration script.
 - **Final Verification Commands Executed:** `npm run lint` (`tsc --noEmit`) PASSED clean; `npm run build` (`vite build`) PASSED clean in 5.33s.
+### Phase 1 Evidence Summary (04 Diagnostic Liquidity)
+- **Research Log Updated:** Evaluated 3 technical approaches (Custom HTML5 Canvas 2D Crop Image Inspector + Bounding Box Engine selected as primary; Accessible Crop Case Report selected as accessibility fallback). Documented crop damage severity ratio $D_{ratio}$, explainable diagnostic confidence score $C_{score}$, and parametric subsidy payout formula $P_{subsidy}$.
+- **Design Specification Rewritten:** `diagnostic-liquidity/DESIGN_NOTES.md` updated with complete 23-point specification including farmer user journey, screen inventory, botanical field visual tokens (`#0F1410`, `#00E676`, `#FFAB00`, `#FF00FF`), and WCAG 2.1 AA accessibility standards.
 - **Result:** `PASS`
+
 
 
 

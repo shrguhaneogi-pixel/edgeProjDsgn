@@ -211,7 +211,15 @@
 - **Validation Matrix Status:** All stages (Phase 0, Phase 1, Phase 2, Stages A-G) for Project 03 (Sacrificial Pathways) marked **PASS**.
 
 ---
-**Project 03 (Sacrificial Pathways) Status:** COMPLETE. Ready for Project 04 (Diagnostic Liquidity).
+### Phase 1: Research & Design Specification (Diagnostic Liquidity)
+**Completion Date:** 2026-10-10  
+- **Research Log Updated:** Evaluated 3 technical rendering approaches; selected Custom HTML5 Canvas 2D Crop Image Inspector + Bounding Box Engine (Primary) and Accessible Crop Case Report (Accessibility Fallback). Documented crop damage ratio $D_{ratio}$, explainable diagnostic confidence score $C_{score}$, and parametric subsidy payout formula $P_{subsidy}$.
+- **Design Notes Rewritten:** [`diagnostic-liquidity/DESIGN_NOTES.md`](file:///c:/project/edgeProjDsgn/diagnostic-liquidity/DESIGN_NOTES.md) rewritten with complete 23-point specification including farmer user journey, screen inventory, botanical field visual tokens (`#0F1410`, `#00E676`, `#FFAB00`, `#FF00FF`), and WCAG 2.1 AA accessibility standards.
+- **Validation Matrix:** Updated Phase 1 for Diagnostic Liquidity to `PASS`.
+
+---
+**Project 04 (Diagnostic Liquidity) Status:** Phase 1 complete. Proceeding to Phase 2 (Architecture & Setup).
+
 
 
 

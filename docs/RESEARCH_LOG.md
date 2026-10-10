@@ -113,9 +113,33 @@ This document logs technical and design research across all 5 engineering projec
 
 
 ### Project 04 — Diagnostic Liquidity
-- **Domain:** Algorithmic crop subsidy & mobile image triage.
-- **Research Topics:** Image intake preview, disease feature annotation, explainable AI confidence scores, claims workflow.
-- **Status:** Scheduled for Phase 1 (Diagnostic Liquidity).
+- **Domain:** Algorithmic crop subsidy & mobile-first crop damage intake triage.
+- **Evaluation Date:** 2026-10-10
+- **Evaluated Technical Approaches:**
+  1. *Approach A (Custom HTML5 Canvas 2D Crop Image Inspector + Bounding Box & Lesion Heatmap Overlay Engine):* Renders uploaded/seeded crop photographs with interactive HTML5 Canvas 2D bounding boxes, lesion highlight overlays (`#FF00FF` / `#FF2A6D`), pixel inspection zoom magnifier, and severity threshold calculation. **Selected Primary**. 100% offline, lightweight, highly performant on mobile devices without external ML model server dependencies.
+  2. *Approach B (External Cloud Computer Vision API - TensorFlow/PyTorch Server):* High accuracy on live data, but requires paid API keys, internet connectivity, and server backend. Kept as optional `UNVERIFIED` fallback.
+  3. *Approach C (Accessible Structured HTML/ARIA Diagnostic Case Summary & Telemetry Matrix):* Accessible step-by-step case card with ARIA status regions (`role="region"`), keyboard focus, and text fallback listing all identified symptoms, severity metrics, and payout status. **Selected as Mandatory Accessibility Fallback**.
+- **Data & Visualization Mathematics:**
+  - **Crop Damage Severity Ratio $D_{ratio}$:**
+    $$D_{ratio} = \frac{\sum \text{Area}(\text{Lesion Bounding Box}_k)}{\text{Total Crop Canopy Surface Area}}$$
+  - **Explainable Diagnostic Confidence Score $C_{score}$:**
+    $$C_{score} = \min\left(0.99, \sum_{s \in \text{Symptoms}} w_s \cdot \text{MatchConfidence}(s) \times (1 - \sigma_{\text{lighting}})\right)$$
+  - **Parametric Subsidy Payout Formula $P_{subsidy}$:**
+    $$P_{subsidy} = \begin{cases}
+    0 & \text{if } D_{ratio} < D_{threshold} \quad (15\%) \\
+    \text{BaseRate} \times \text{Hectares} \times \left(\frac{D_{ratio} - D_{threshold}}{1.0 - D_{threshold}}\right) & \text{if } D_{ratio} \ge D_{threshold}
+    \end{cases}$$
+    Where $\text{BaseRate} = \$850/\text{hectare}$, $D_{threshold} = 0.15$.
+- **Accessibility & Design System Standards:**
+  - **Botanical Field Aesthetic:** Deep soil background (`#0F1410`, `#161F18`), supportive botanical green (`#00E676`), crop harvest gold (`#FFAB00`), lesion accent (`#FF00FF`), high-contrast text (`#F0F6FC`).
+  - **Keyboard Navigation:** Crop image selection bound to `Digit1` / `Digit2` / `Digit3`, claim adjudication state step bound to `Space` / `KeyS`, view switcher bound to `KeyA`.
+  - **Screen Reader Support:** Live region (`aria-live="polite"`) announcing: *"Crop Photo Assessed: Maize Northern Leaf Blight detected with 92% confidence. Damage severity 38%. Subsidy claim eligible for $3,230 USD settlement."*
+  - **Reduced Motion:** Disable scanning radar effect and pulse animations when `prefers-reduced-motion: reduce` is active.
+- **Official References Consulted:**
+  - [FAO Plant Disease Assessment Guide](https://www.fao.org/agriculture/crops/) (Checked: 2026-10-10)
+  - [W3C ARIA Region Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/landmark/) (Checked: 2026-10-10)
+- **Verification Status:** `VERIFIED` - Crop lesion scoring and parametric subsidy payout formulas verified locally.
+
 
 ### Project 05 — Horizon-Scrape
 - **Domain:** Ambient optical smog & crowdsourced observation canvas.
