@@ -241,6 +241,7 @@
 ---
 ### Phase 3 Complete (Diagnostic Liquidity — Stages A through G)
 **Completion Date:** 2026-10-10  
+**Final Release Commit:** `5e65097`  
 - **Stage A (Interaction Spec):** Defined state models (`src/types/stateModel.ts`), evaluation math (`src/utils/diagnosticEvaluator.ts`), and pure reducer transition logic (`src/state/appReducer.ts`). Commit `605936d`.
 - **Stage B (Signature Prototype):** Built `LesionInspectorCanvas.tsx` (HTML5 Canvas 2D crop foliage inspector, procedural necrotic lesions, neon magenta bounding box HUD `#FF00FF`, laser scanning animation, tracking 2.5x zoom lens magnifier, click box selection) and `CropPhotoSelector.tsx`.
 - **Stage C (Deterministic Data):** Built `DiagnosticConfidenceCard.tsx` (explainable AI $C_{score}$ confidence gauge, verified symptom checklist, interactive threshold slider filter) and `ClaimSettlementCard.tsx` (parametric subsidy payout formula $P_{subsidy}$ card & claim status stepper).
