@@ -16,7 +16,7 @@ This matrix tracks the validation status of every stage across all five engineer
 | Project | Phase 0 Repo Audit | Phase 1 Design Spec | Phase 2 Arch Setup | Stage A Interaction | Stage B Signature Prototype | Stage C Demo Data | Stage D Complete States | Stage E Design Polish | Stage F Integration & Tests | Stage G Final Release |
 |---|---|---|---|---|---|---|---|---|---|---|
 | **01 Parametric Pulse** | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS |
-| **02 Barter Bridge** | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
+| **02 Barter Bridge** | PASS | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
 | **03 Sacrificial Pathways** | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
 | **04 Diagnostic Liquidity** | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
 | **05 Horizon-Scrape** | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
@@ -48,6 +48,11 @@ This matrix tracks the validation status of every stage across all five engineer
 - **Deterministic Demo Data:** Created [`parametric-pulse/src/data/demoScenarios.ts`](file:///c:/project/edgeProjDsgn/parametric-pulse/src/data/demoScenarios.ts) providing Category 2 offshore (Non-Qualifying) and Category 4 landfall (Qualifying) scenario tracks.
 - **Design & Plan Specs Updated:** [`parametric-pulse/DESIGN_NOTES.md`](file:///c:/project/edgeProjDsgn/parametric-pulse/DESIGN_NOTES.md) and [`docs/IMPLEMENTATION_PLAN.md`](file:///c:/project/edgeProjDsgn/docs/IMPLEMENTATION_PLAN.md) updated with interaction specs and state happy paths.
 - **Verification Commands Executed:** `npm run lint` (`tsc --noEmit`) PASSED clean; `npm run build` (`vite build`) PASSED clean in 4.80s.
+- **Result:** `PASS`
+
+### Phase 1 Evidence Summary (02 The Barter Bridge)
+- **Research Log Updated:** Evaluated 3 technical approaches (Custom SVG AST Canvas selected as primary; Nested HTML ARIA Treeview selected as accessibility fallback). Documented Bradley-Terry pairwise scoring and AST weighted evaluation math.
+- **Design Specification Rewritten:** `barter-bridge/DESIGN_NOTES.md` updated with complete 23-point specification including resident forced-choice journey, admin AST workspace, neo-brutalist visual tokens (`#F9F8F6`, `#18181B`, `#B2FF05`), and accessibility specifications.
 - **Result:** `PASS`
 
 

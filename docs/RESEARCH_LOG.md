@@ -57,8 +57,26 @@ This document logs technical and design research across all 5 engineering projec
 
 ### Project 02 — The Barter Bridge
 - **Domain:** Civic preference AST & trade-off decision engine.
-- **Research Topics:** Rule engine AST design, priority ranking algorithms, interactive graph node inspectors.
-- **Status:** Scheduled for Phase 1 (Barter Bridge).
+- **Evaluation Date:** 2026-10-10
+- **Evaluated Technical Approaches:**
+  1. *Approach A (Custom SVG Interactive AST Canvas + Deterministic Rule Evaluator):* Renders an interactive decision tree with selectable rule nodes, live input/operator/output inspectors, and weight sliders. **Selected Primary**. 100% offline, zero external dependencies, high performance.
+  2. *Approach B (External D3.js / Graphviz Library Integration):* Automatic force-directed layout, but adds bundle complexity and non-deterministic node positioning. Kept as `UNVERIFIED` optional feature.
+  3. *Approach C (Nested HTML ARIA Tree Inspector):* Accessible linear tree hierarchy with standard keyboard navigation and ARIA attributes (`role="tree"`). **Selected as Mandatory Accessibility Fallback**.
+- **Data & Visualization Mathematics:**
+  - **Pairwise Bradley-Terry Trade-Off Scoring:**
+    $$\text{Score}(P_i) = \sum_{j \neq i} w_{ij} \cdot \mathbb{I}(P_i \succ P_j)$$
+  - **AST Rule Evaluation Structure:**
+    $$\text{Root(District Priority)} \leftarrow \text{AND / WEIGHTED\_SUM} \leftarrow \{\text{Category Node}_k, \text{Constraint Node}_m\}$$
+  - **Policy Simulation Weight Modification:**
+    $$\text{Rank}_{sim}(P_i) = \sum_{c \in Categories} \alpha_c \cdot \text{Score}_{raw}(P_i, c)$$
+- **Accessibility & Design System Standards:**
+  - **Neo-Brutalist Civic Aesthetic:** Warm off-white background (`#F9F8F6`), deep charcoal text (`#18181B`), lime signal accent (`#B2FF05`), 2px crisp black borders (`#000000`).
+  - **Keyboard Navigation:** Choice cards bound to `KeyA` / `KeyB` or `ArrowLeft` / `ArrowRight`. AST canvas keyboard tree navigation.
+  - **Screen Reader Support:** Live region (`aria-live="polite"`) announcing: *"Choice 3 of 5 recorded: Flood Drainage prioritized over Street Lighting. Aggregate ranking updated."*
+- **Official References Consulted:**
+  - [W3C ARIA Treeview Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/treeview/) (Checked: 2026-10-10)
+  - [Stanford Participatory Budgeting Project](https://participatorybudgeting.stanford.edu/) (Checked: 2026-10-10)
+- **Verification Status:** `VERIFIED` - AST evaluation algorithms and ARIA tree structures tested locally.
 
 ### Project 03 — Sacrificial Pathways
 - **Domain:** Topographic urban flood routing.
