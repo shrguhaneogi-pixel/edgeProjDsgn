@@ -118,6 +118,7 @@
 ---
 ### Phase 1: Research & Design Specification (Sacrificial Pathways)
 **Completion Date:** 2026-10-10  
+**Commit:** `98a7d20`  
 - **Research Log Updated:** Evaluated 3 technical rendering approaches; selected Custom HTML5 Canvas 2D Topographic Elevation Surface with Iso-contour & Flow Vector Layering (Primary) and Accessible Structured Data Table (Accessibility Fallback). Documented Manning's hydraulic flow equations and sacrificial weir diversion physics.
 - **Design Notes Rewritten:** [`sacrificial-pathways/DESIGN_NOTES.md`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/DESIGN_NOTES.md) rewritten with complete 23-point specification including user journey, screen inventory, cinematic terrain visual tokens (`#0D1117`, `#FF3D00`, `#00A3FF`), hydraulic flow math, and WCAG 2.1 AA accessibility standards.
 - **Validation Matrix:** Updated Phase 1 for Sacrificial Pathways to `PASS`.
