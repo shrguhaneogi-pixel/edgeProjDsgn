@@ -65,7 +65,24 @@ flowchart TD
 
 ### Project 03 — Sacrificial Pathways (Topographic Flood Routing)
 - **Concept:** Geospatial exploration prototype comparing hypothetical floodwater routes across urban basin terrain.
-- **Signature Interaction:** Interactive terrain canvas with route comparison, flow rate simulation, and consequence analysis.
+- **Signature Interaction:** Interactive topographic elevation terrain canvas with route selection, hydraulic discharge control, sacrificial gate diversion toggle, and sectoral consequence inspector.
+- **Architecture & Technical Stack (Phase 2 Verified):**
+  - **Framework & Bundler:** React 19 + TypeScript (`vite`, `@vitejs/plugin-react`). Self-contained build in `sacrificial-pathways/`.
+  - **Rendering Layer:** HTML5 Canvas 2D Topographic Elevation Surface (`TerrainCanvas2D`) with 2.5D contour lines, hydraulic flow velocity vectors, sector boundary overlays, and electric orange sacrificial bypass gate path (`#FF3D00`).
+  - **State Management:** Custom React reducer (`useReducer`) managing discharge rate $Q$, water level offset $h$, active scenario (`Scenario A: Natural Channel Overflow` vs `Scenario B: Sacrificial Bypass Gate Open`), sacrificial gate position ($OPEN / CLOSED$), selected sector inspector, and accessibility view mode.
+  - **Data Boundaries & Contracts:** Seeded TypeScript data modules (`src/types/index.ts`, `src/types/stateModel.ts`, `src/data/demoTerrainScenarios.ts`) providing 100% deterministic local terrain elevation grid ($20 \times 20$ heightmap matrix), 4 municipal sectors, hydraulic parameters, and risk scoring models.
+  - **Run & Validation Commands:**
+    - Dev server: `npm run dev` (Port 3002)
+    - Production build: `npm run build`
+    - Typecheck: `npm run lint` (`tsc --noEmit`)
+- **Phase 3 Build Stage Roadmap:**
+  - Stage A: Interaction Spec & State Model Schema Definition (`src/types/stateModel.ts`, `src/state/appReducer.ts`).
+  - Stage B: Topographic Canvas 2D Terrain Surface Signature Prototype (`TerrainCanvas2D.tsx`, `RouteSelector.tsx`).
+  - Stage C: Deterministic Hydraulic Data Engine (`demoTerrainScenarios.ts`, `FlowTelemetryCard.tsx`, `ConsequenceAnalyzer.tsx`).
+  - Stage D: Complete System States (Loading, Offline Banner, Error Banner, Mobile Stacked Layout, `AccessibleElevationTable.tsx`).
+  - Stage E: Design Polish & Cinematic Terrain Aesthetic (`#0D1117`, `#FF3D00`, `#00A3FF`).
+  - Stage F: Hydraulic Flow Unit Testing & Build Validation (`src/utils/flowCalculator.test.ts`).
+  - Stage G: Final README Update, 2-Minute Demo Script, & Release Commit.
 
 ### Project 04 — Diagnostic Liquidity (Algorithmic Crop Subsidy)
 - **Concept:** Mobile-first crop-damage intake and explainable triage workflow.
