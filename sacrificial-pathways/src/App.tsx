@@ -1,4 +1,6 @@
 import { useReducer } from 'react';
+import { ConsequenceAnalyzer } from './components/ConsequenceAnalyzer';
+import { FlowTelemetryCard } from './components/FlowTelemetryCard';
 import { RouteSelector } from './components/RouteSelector';
 import { TerrainCanvas2D } from './components/TerrainCanvas2D';
 import { appReducer, createInitialState } from './state/appReducer';
@@ -6,7 +8,7 @@ import { appReducer, createInitialState } from './state/appReducer';
 export default function App() {
   const [state, dispatch] = useReducer(appReducer, undefined, () => createInitialState());
 
-  const { selectedSectorId, sectorRisks, telemetry } = state;
+  const { selectedSectorId, sectorRisks, telemetry, gateStatus } = state;
   const selectedSector = sectorRisks.find(r => r.sectorId === selectedSectorId);
 
   return (
@@ -46,40 +48,23 @@ export default function App() {
       {/* Main Grid Workspace */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: '1.5rem' }}>
         {/* Left Workspace */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
           <TerrainCanvas2D state={state} dispatch={dispatch} />
 
-          {/* Telemetry Summary Bar */}
-          <div style={{ background: '#161B22', borderRadius: '8px', border: '1px solid #30363D', padding: '1rem', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem', textAlign: 'center' }}>
-            <div>
-              <div style={{ fontSize: '0.75rem', color: '#8B949E' }}>Peak Discharge Q</div>
-              <div style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#F0F6FC', fontFamily: 'monospace' }}>
-                {telemetry.dischargeM3PerSec} m³/s
-              </div>
-            </div>
-            <div>
-              <div style={{ fontSize: '0.75rem', color: '#8B949E' }}>Sacrificial Diverted Q</div>
-              <div style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#FF3D00', fontFamily: 'monospace' }}>
-                {telemetry.divertedFlowM3PerSec} m³/s
-              </div>
-            </div>
-            <div>
-              <div style={{ fontSize: '0.75rem', color: '#8B949E' }}>Downstream Inundation</div>
-              <div style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#00A3FF', fontFamily: 'monospace' }}>
-                {telemetry.downstreamDepthMeters} m
-              </div>
-            </div>
-            <div>
-              <div style={{ fontSize: '0.75rem', color: '#8B949E' }}>Depth Reduction Delta</div>
-              <div style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#00E676', fontFamily: 'monospace' }}>
-                -{telemetry.depthReductionMeters} m
-              </div>
-            </div>
-          </div>
+          {/* Flow Telemetry Math Card */}
+          <FlowTelemetryCard telemetry={telemetry} gateStatus={gateStatus} />
+
+          {/* Consequence Analyzer Breakdown Card */}
+          <ConsequenceAnalyzer
+            sectorRisks={sectorRisks}
+            gateStatus={gateStatus}
+            selectedSectorId={selectedSectorId}
+            onSelectSector={id => dispatch({ type: 'SELECT_SECTOR', payload: id })}
+          />
         </div>
 
         {/* Right Sidebar: Controls & Sector Inspector */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
           <RouteSelector state={state} dispatch={dispatch} />
 
           {/* Sector Inspector Card */}

@@ -155,7 +155,18 @@
 - **Validation Matrix:** Updated Stage B for Sacrificial Pathways to `PASS`.
 
 ---
-**Project 03 (Sacrificial Pathways) Status:** Stage B complete. Ready for Stage C (Deterministic Data Engine).
+### Phase 3 Stage C: Deterministic Data Engine & Formula Cards (Sacrificial Pathways)
+**Completion Date:** 2026-10-10  
+- **Formula & Consequence Components:**
+  - [`sacrificial-pathways/src/components/FlowTelemetryCard.tsx`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/components/FlowTelemetryCard.tsx): Formula breakdown card for Manning's Kinematic Velocity $V = \frac{1}{n} R_h^{2/3} S_0^{1/2}$ and Broad-Crested Weir Diversion Flow $Q_{sacrificial} = C_d \cdot b \cdot (h_{river} - h_{gate})^{3/2}$.
+  - [`sacrificial-pathways/src/components/ConsequenceAnalyzer.tsx`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/components/ConsequenceAnalyzer.tsx): Sector exposure grid displaying asset valuation diffs ($USD), risk percentage, status badges, and sacrificial channel trade-off callout.
+  - [`sacrificial-pathways/src/App.tsx`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/App.tsx): Integrated full workspace with canvas, telemetry cards, consequence analyzer, controls, and inspector.
+- **Verification Commands Executed:** `npm run lint` (`tsc --noEmit`) PASSED clean; `npm run build` (`vite build`) PASSED clean in 3.86s.
+- **Validation Matrix:** Updated Stage C for Sacrificial Pathways to `PASS`.
+
+---
+**Project 03 (Sacrificial Pathways) Status:** Stage C complete. Ready for Stage D (Complete States & Accessibility).
+
 
 
 
