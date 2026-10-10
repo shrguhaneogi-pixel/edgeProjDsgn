@@ -86,7 +86,24 @@ flowchart TD
 
 ### Project 04 — Diagnostic Liquidity (Algorithmic Crop Subsidy)
 - **Concept:** Mobile-first crop-damage intake and explainable triage workflow.
-- **Signature Interaction:** Image intake preview, visual lesion annotation, confidence score card, and support/insurance case state machine.
+- **Signature Interaction:** Mobile-first crop image intake preview, interactive HTML5 Canvas 2D lesion annotation inspector (`#FF00FF`), explainable diagnostic confidence card, and parametric subsidy claim settlement state machine.
+- **Architecture & Technical Stack (Phase 2 Verified):**
+  - **Framework & Bundler:** React 19 + TypeScript (`vite`, `@vitejs/plugin-react`). Self-contained build in `diagnostic-liquidity/`.
+  - **Rendering Layer:** HTML5 Canvas 2D Crop Image Inspector (`LesionInspectorCanvas`) with interactive lesion bounding box overlays (`#FF00FF`), severity heatmap highlights, and zoom magnifier lens.
+  - **State Management:** Custom React reducer (`useReducer`) managing active crop photo ID, confidence threshold filter, bounding box toggle, selected lesion inspector, claim settlement lifecycle state (`DRAFT` -> `INTAKE_SUBMITTED` -> `DIAGNOSTIC_EVALUATED` -> `ADJUDICATION_PENDING` -> `SUBSIDY_DISPATCHED` -> `SETTLED`), and view mode toggles.
+  - **Data Boundaries & Contracts:** Seeded TypeScript data modules (`src/types/index.ts`, `src/types/stateModel.ts`, `src/data/demoCropData.ts`) providing 100% deterministic local data for 3 crop diseases (Maize Northern Leaf Blight, Wheat Stem Rust, Soy Healthy Control), 12 lesion bounding boxes, symptom match checklists, and parametric subsidy rate formulas ($850/hectare).
+  - **Run & Validation Commands:**
+    - Dev server: `npm run dev` (Port 3003)
+    - Production build: `npm run build`
+    - Typecheck: `npm run lint` (`tsc --noEmit`)
+- **Phase 3 Build Stage Roadmap:**
+  - Stage A: Interaction Spec & State Model Schema Definition (`src/types/stateModel.ts`, `src/state/appReducer.ts`).
+  - Stage B: Canvas 2D Lesion Inspector Signature Prototype (`LesionInspectorCanvas.tsx`, `CropPhotoSelector.tsx`).
+  - Stage C: Deterministic Data Engine & Formula Cards (`demoCropData.ts`, `DiagnosticConfidenceCard.tsx`, `ClaimSettlementCard.tsx`).
+  - Stage D: Complete System States (Loading, Offline Banner, Error Banner, Mobile Layout, `AccessibleCropCaseReport.tsx`).
+  - Stage E: Design Polish & Botanical Field Aesthetic (`#0F1410`, `#00E676`, `#FFAB00`, `#FF00FF`).
+  - Stage F: Crop Damage & Subsidy Unit Testing (`src/utils/diagnosticEvaluator.test.ts`).
+  - Stage G: Final README Update, 2-Minute Demo Script, & Release Commit.
 
 ### Project 05 — Horizon-Scrape (Ambient Optical Smog Canvas)
 - **Concept:** Crowdsourced environmental observation experience using horizon photos and visual haze filters.
