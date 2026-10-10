@@ -136,6 +136,7 @@
 ---
 ### Phase 3 Stage A: Interaction Specification & State Models (Sacrificial Pathways)
 **Completion Date:** 2026-10-10  
+**Commit:** `b079908`  
 - **Data Contracts & Schemas:** Created [`sacrificial-pathways/src/types/stateModel.ts`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/types/stateModel.ts) and expanded [`sacrificial-pathways/src/types/index.ts`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/types/index.ts) defining `SectorAsset`, `ElevationPoint`, `SacrificialGate`, `TerrainScenario`, `HydraulicTelemetryState`, `AppState`, and `AppAction`.
 - **Hydraulic Flow Utilities & Reducer:** Built [`sacrificial-pathways/src/utils/flowCalculator.ts`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/utils/flowCalculator.ts) implementing Manning's velocity $V = \frac{1}{n} R_h^{2/3} S_0^{1/2}$ and weir diversion flow $Q_{sacrificial}$, and [`sacrificial-pathways/src/state/appReducer.ts`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/state/appReducer.ts) with pure action handlers (`SELECT_SCENARIO`, `TOGGLE_SACRIFICIAL_GATE`, `SET_DISCHARGE_RATE`, `SET_WATER_LEVEL_OFFSET`, `SELECT_SECTOR`, `TOGGLE_ACCESSIBILITY_VIEW`, `TOGGLE_ANIMATION`, `RESET_SIMULATION`).
 - **Deterministic Data Module:** Created [`sacrificial-pathways/src/data/demoTerrainScenarios.ts`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/data/demoTerrainScenarios.ts) defining 4 municipal sectors and 3 deterministic flood scenarios.
