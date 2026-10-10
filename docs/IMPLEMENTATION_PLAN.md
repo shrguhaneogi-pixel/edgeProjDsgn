@@ -45,6 +45,23 @@ flowchart TD
 ### Project 02 — The Barter Bridge (Civic Preference AST Engine)
 - **Concept:** Civic participation decision simulator transforming public trade-offs into an explainable AST and priority ranking.
 - **Signature Interaction:** Guided trade-off choice flow linked to an explorable decision tree and rule evaluation engine.
+- **Architecture & Technical Stack (Phase 2 Verified):**
+  - **Framework & Bundler:** React 19 + TypeScript (`vite`, `@vitejs/plugin-react`). Self-contained build in `barter-bridge/`.
+  - **Rendering Layer:** Custom SVG interactive AST canvas (`ASTCanvasSVG`) + Neo-Brutalist HTML choice cards (`PairwiseChoiceCard`).
+  - **State Management:** Custom React reducer (`useReducer`) managing survey step index, user choice map, selected AST node ID, category weight sliders, and Borda/Bradley-Terry ranking calculations.
+  - **Data Boundaries & Contracts:** Seeded TypeScript data modules (`src/types/index.ts`, `src/types/stateModel.ts`, `src/data/demoDistrictData.ts`) providing 100% deterministic local data for 5 municipal projects, 12 AST nodes, and 250 seeded public response records.
+  - **Run & Validation Commands:**
+    - Dev server: `npm run dev` (Port 3001)
+    - Production build: `npm run build`
+    - Typecheck: `npm run lint` (`tsc --noEmit`)
+- **Phase 3 Build Stage Roadmap:**
+  - Stage A: Interaction Spec & State Model Schema Definition.
+  - Stage B: SVG AST Canvas & Forced Choice Cards Signature Prototype.
+  - Stage C: Deterministic Data Engine (5 municipal projects, 12 AST decision nodes, 250 seeded responses).
+  - Stage D: Complete System States (Resident Survey, Personal Summary, Admin AST Workspace, ARIA Tree View).
+  - Stage E: Design Polish & Neo-Brutalist Visual System (`#F9F8F6`, `#18181B`, `#B2FF05`).
+  - Stage F: Unit Tests & Build Validation (`src/utils/astEvaluator.test.ts`).
+  - Stage G: Final README Update, Demo Script, & Verified Commit.
 
 ### Project 03 — Sacrificial Pathways (Topographic Flood Routing)
 - **Concept:** Geospatial exploration prototype comparing hypothetical floodwater routes across urban basin terrain.
