@@ -1,11 +1,16 @@
+export type SectorCategory = 'COMMERCIAL' | 'RESIDENTIAL' | 'INDUSTRIAL' | 'AGRICULTURAL';
+export type SectorRiskStatus = 'SAFE' | 'WARNING' | 'CRITICAL';
+export type GateStatus = 'OPEN' | 'CLOSED';
+
 export interface SectorAsset {
   id: string;
   name: string;
-  category: 'COMMERCIAL' | 'RESIDENTIAL' | 'INDUSTRIAL' | 'AGRICULTURAL';
-  assetValueUsd: number; // e.g. 150_000_000
-  elevationMeters: number; // e.g. 12.5
-  populationDensity: number;
-  inundationRiskThresholdMeters: number; // e.g. 1.2
+  category: SectorCategory;
+  assetValueUsd: number; // e.g. 240_000_000
+  elevationMeters: number; // e.g. 8.5
+  population: number; // e.g. 18,500
+  inundationRiskThresholdMeters: number; // e.g. 0.8
+  description: string;
 }
 
 export interface ElevationPoint {
@@ -20,10 +25,11 @@ export interface ElevationPoint {
 export interface SacrificialGate {
   id: string;
   name: string;
-  status: 'OPEN' | 'CLOSED';
-  capacityM3PerSec: number;
-  triggerElevationMeters: number;
+  status: GateStatus;
+  capacityM3PerSec: number; // Max hydraulic diversion capacity e.g. 600
+  triggerElevationMeters: number; // Gate crest elevation e.g. 10.0
   currentDivertedFlowM3PerSec: number;
+  gateWidthMeters: number; // e.g. 15.0
 }
 
 export interface TerrainScenario {
@@ -31,7 +37,20 @@ export interface TerrainScenario {
   name: string;
   description: string;
   peakDischargeM3PerSec: number;
-  sacrificialGateDefault: 'OPEN' | 'CLOSED';
+  sacrificialGateDefault: GateStatus;
   expectedDownstreamDepthMeters: number;
   impactSummary: string;
+}
+
+export interface SectorRiskCalculation {
+  sectorId: string;
+  sectorName: string;
+  category: SectorCategory;
+  assetValueUsd: number;
+  elevationMeters: number;
+  waterLevelMeters: number;
+  inundationDepthMeters: number;
+  riskScorePercent: number; // 0 to 100
+  riskStatus: SectorRiskStatus;
+  exposedAssetValueUsd: number;
 }

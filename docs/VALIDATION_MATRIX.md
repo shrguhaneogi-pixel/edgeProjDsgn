@@ -17,7 +17,7 @@ This matrix tracks the validation status of every stage across all five engineer
 |---|---|---|---|---|---|---|---|---|---|---|
 | **01 Parametric Pulse** | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS |
 | **02 Barter Bridge** | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS | PASS |
-| **03 Sacrificial Pathways** | PASS | PASS | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
+| **03 Sacrificial Pathways** | PASS | PASS | PASS | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
 | **04 Diagnostic Liquidity** | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
 | **05 Horizon-Scrape** | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
 
@@ -69,7 +69,13 @@ This matrix tracks the validation status of every stage across all five engineer
 - **Architecture Defined:** Detailed technical architecture in `docs/IMPLEMENTATION_PLAN.md` (React 19 + TypeScript + Vite, HTML5 Canvas 2D Topographic Surface, typed state data contracts).
 - **Scaffolded & Installed:** Initialized `sacrificial-pathways/package.json`, `tsconfig.json`, `vite.config.ts`, `index.html`, `.gitignore`, `src/types/index.ts`, `src/main.tsx`, and `src/App.tsx`. Successfully ran `npm install` (71 packages audited).
 - **Verification Commands Executed:** `npm run lint` (`tsc --noEmit`) PASSED clean; `npm run build` (`vite build`) PASSED clean in 2.44s.
+### Phase 3 Stage A Evidence Summary (03 Sacrificial Pathways)
+- **State Models & Schemas Defined:** Created [`sacrificial-pathways/src/types/stateModel.ts`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/types/stateModel.ts) and expanded [`sacrificial-pathways/src/types/index.ts`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/types/index.ts) defining `SectorAsset`, `ElevationPoint`, `SacrificialGate`, `TerrainScenario`, `HydraulicTelemetryState`, `AppState`, and `AppAction`.
+- **Hydraulic Flow Utilities & Reducer:** Built [`sacrificial-pathways/src/utils/flowCalculator.ts`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/utils/flowCalculator.ts) (Manning velocity, sacrificial weir diversion flow, sector risk valuation) and [`sacrificial-pathways/src/state/appReducer.ts`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/state/appReducer.ts) with pure action handlers (`SELECT_SCENARIO`, `TOGGLE_SACRIFICIAL_GATE`, `SET_DISCHARGE_RATE`, `SET_WATER_LEVEL_OFFSET`, `SELECT_SECTOR`, `TOGGLE_ACCESSIBILITY_VIEW`, `TOGGLE_ANIMATION`, `RESET_SIMULATION`).
+- **Deterministic Data Scenarios:** Created [`sacrificial-pathways/src/data/demoTerrainScenarios.ts`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/data/demoTerrainScenarios.ts) defining 4 municipal sectors and 3 deterministic flood scenarios.
+- **Verification Commands Executed:** `npm run lint` (`tsc --noEmit`) PASSED clean; `npm run build` (`vite build`) PASSED clean in 4.62s.
 - **Result:** `PASS`
+
 
 
 

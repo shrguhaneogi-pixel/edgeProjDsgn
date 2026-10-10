@@ -134,7 +134,17 @@
 - **Validation Matrix:** Updated Phase 2 for Sacrificial Pathways to `PASS`.
 
 ---
-**Project 03 (Sacrificial Pathways) Status:** Phase 2 complete. Ready for Phase 3 Stage A.
+### Phase 3 Stage A: Interaction Specification & State Models (Sacrificial Pathways)
+**Completion Date:** 2026-10-10  
+- **Data Contracts & Schemas:** Created [`sacrificial-pathways/src/types/stateModel.ts`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/types/stateModel.ts) and expanded [`sacrificial-pathways/src/types/index.ts`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/types/index.ts) defining `SectorAsset`, `ElevationPoint`, `SacrificialGate`, `TerrainScenario`, `HydraulicTelemetryState`, `AppState`, and `AppAction`.
+- **Hydraulic Flow Utilities & Reducer:** Built [`sacrificial-pathways/src/utils/flowCalculator.ts`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/utils/flowCalculator.ts) implementing Manning's velocity $V = \frac{1}{n} R_h^{2/3} S_0^{1/2}$ and weir diversion flow $Q_{sacrificial}$, and [`sacrificial-pathways/src/state/appReducer.ts`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/state/appReducer.ts) with pure action handlers (`SELECT_SCENARIO`, `TOGGLE_SACRIFICIAL_GATE`, `SET_DISCHARGE_RATE`, `SET_WATER_LEVEL_OFFSET`, `SELECT_SECTOR`, `TOGGLE_ACCESSIBILITY_VIEW`, `TOGGLE_ANIMATION`, `RESET_SIMULATION`).
+- **Deterministic Data Module:** Created [`sacrificial-pathways/src/data/demoTerrainScenarios.ts`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/data/demoTerrainScenarios.ts) defining 4 municipal sectors and 3 deterministic flood scenarios.
+- **Verification Commands Executed:** `npm run lint` (`tsc --noEmit`) PASSED clean; `npm run build` (`vite build`) PASSED clean in 4.62s.
+- **Validation Matrix:** Updated Stage A for Sacrificial Pathways to `PASS`.
+
+---
+**Project 03 (Sacrificial Pathways) Status:** Stage A complete. Ready for Stage B (Signature Prototype).
+
 
 
 
