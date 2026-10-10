@@ -231,6 +231,7 @@
 ---
 ### Phase 3 Stage A: Interaction Specification & State Models (Diagnostic Liquidity)
 **Completion Date:** 2026-10-10  
+**Commit:** `605936d`  
 - **State Models & Schemas Defined:** Created [`diagnostic-liquidity/src/types/stateModel.ts`](file:///c:/project/edgeProjDsgn/diagnostic-liquidity/src/types/stateModel.ts) and expanded [`diagnostic-liquidity/src/types/index.ts`](file:///c:/project/edgeProjDsgn/diagnostic-liquidity/src/types/index.ts) defining `CropPhotoSample`, `BoundingBox`, `SymptomMatch`, `ClaimStatus`, `DiagnosticAssessmentState`, `AppState`, and `AppAction`.
 - **Diagnostic Math Utilities & Pure Reducer:** Implemented [`diagnostic-liquidity/src/utils/diagnosticEvaluator.ts`](file:///c:/project/edgeProjDsgn/diagnostic-liquidity/src/utils/diagnosticEvaluator.ts) ($D_{ratio}$, $C_{score}$, and $P_{subsidy}$ calculation formulas) and [`diagnostic-liquidity/src/state/appReducer.ts`](file:///c:/project/edgeProjDsgn/diagnostic-liquidity/src/state/appReducer.ts) handling state actions.
 - **Deterministic Crop Data:** Created [`diagnostic-liquidity/src/data/demoCropData.ts`](file:///c:/project/edgeProjDsgn/diagnostic-liquidity/src/data/demoCropData.ts) seeding Maize Northern Leaf Blight ($3,230 USD), Wheat Stem Rust ($7,118 USD), and Healthy Soy ($0 USD).
