@@ -178,6 +178,7 @@
 ---
 ### Phase 3 Stage E: Design Polish & Keyboard Accessibility (Sacrificial Pathways)
 **Completion Date:** 2026-10-10  
+**Commit:** `bcc8cff`  
 - **Cinematic Polish & Keyboard Shortcuts:**
   - Added global keyboard shortcuts (`1-3` for scenarios, `G` for gate toggle, `A` for accessible view, `R` for reset) with a visual legend bar.
   - Implemented `prefers-reduced-motion: reduce` listener to turn off canvas particle animations automatically.
