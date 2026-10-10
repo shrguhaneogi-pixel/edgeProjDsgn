@@ -79,9 +79,38 @@ This document logs technical and design research across all 5 engineering projec
 - **Verification Status:** `VERIFIED` - AST evaluation algorithms and ARIA tree structures tested locally.
 
 ### Project 03 — Sacrificial Pathways
-- **Domain:** Topographic urban flood routing.
-- **Research Topics:** 3D/2D terrain elevation surfaces, flow vector visualization, sacrificial channel routing comparison.
-- **Status:** Scheduled for Phase 1 (Sacrificial Pathways).
+- **Domain:** Topographic urban flood routing & sacrificial channel diversion simulation.
+- **Evaluation Date:** 2026-10-10
+- **Evaluated Technical Approaches:**
+  1. *Approach A (Custom HTML5 Canvas 2D Topographic Elevation Surface + Iso-contour & Flow Vector Layering):* Renders interactive terrain contours, elevation grid, flow direction vectors, water inundation overlays, and sacrificial channel bypass gates (`#FF3D00`). **Selected Primary**. 100% offline, lightweight, high performance on all devices without WebGL dependencies.
+  2. *Approach B (External WebGL / Three.js 3D Elevation Mesh):* Provides 3D elevation mesh navigation, but introduces GPU context overhead and potential mobile WebGL crashes. Kept as `UNVERIFIED` fallback.
+  3. *Approach C (Accessible Structured HTML/ARIA Elevation & Inundation Data Table):* Accessible table view (`AccessibleElevationTable`) providing elevation, flood risk, infrastructure assets exposed, and diversion state per sector with standard keyboard sorting. **Selected as Mandatory Accessibility Fallback**.
+- **Data & Visualization Mathematics:**
+  - **Terrain Elevation Surface Function $Z(x, y)$:**
+    Synthetic topographic elevation mesh:
+    $$Z(x, y) = Z_{base} + A_1 \cdot \cos(k_x x) \cdot \sin(k_y y) - d_{channel}(x,y)$$
+  - **Hydraulic Flow Vector & Manning's Kinematic Wave Velocity Equation:**
+    Flow velocity $V$ along slope gradient $\nabla Z = \left(\frac{\partial Z}{\partial x}, \frac{\partial Z}{\partial y}\right)$:
+    $$V = \frac{1}{n} R_h^{2/3} S_0^{1/2}$$
+    Where $n$ is Manning's roughness coefficient ($n = 0.035$ for urban channels, $n = 0.050$ for overland floodplains), $R_h$ is hydraulic radius (m), and $S_0 = |\nabla Z|$ is energy slope gradient.
+  - **Sacrificial Channel Diversion Routing Equation:**
+    When sacrificial gate diversion threshold $h_{gate}$ is breached or manually opened ($S_{gate} = 1$):
+    $$Q_{total} = Q_{primary} + Q_{sacrificial}$$
+    $$Q_{sacrificial} = C_d \cdot b \cdot (h_{river} - h_{gate})^{3/2}$$
+    Where $C_d \approx 1.84$ (broad-crested weir coefficient), $b$ is gate width, reducing downstream residential inundation depth $h_{downstream}$ by:
+    $$\Delta h = \frac{Q_{sacrificial}}{W_{river} \cdot V_{downstream}}$$
+  - **Consequence / Risk Exposure Score:**
+    $$\text{Risk Score} = \sum_{\text{sectors}} (\text{Inundation Depth}_s \times \text{Asset Value}_s \times \text{Vulnerability Weight}_s)$$
+- **Accessibility & Design System Standards:**
+  - **Cinematic Terrain Aesthetic:** Deep charcoal control panel (`#0D1117`, `#161B22`), mineral topographic contours (`#2D3748`, `#4A5568`), electric orange sacrificial diversion paths (`#FF3D00`), restrained hydraulic blue water (`#00A3FF`), critical warning red (`#FF2A6D`), safe green (`#00E676`).
+  - **Keyboard Navigation:** Scenario switcher bound to `Key1` / `Key2` / `Key3`, sacrificial gate toggle bound to `Space` / `KeyG`, spatial grid navigation via `ArrowUp`/`ArrowDown`/`ArrowLeft`/`ArrowRight`.
+  - **Screen Reader Support:** Live region (`aria-live="polite"`) announcing: *"Scenario B Selected: Sacrificial Bypass Gate OPEN. Downstream flood depth reduced by 1.4 meters. Residential District exposure: LOW."*
+  - **Reduced Motion:** Pause water flow particle animation and transition instantly when `prefers-reduced-motion: reduce` is active.
+- **Official References Consulted:**
+  - [USACE HEC-RAS Hydraulic Reference Manual](https://www.hec.usace.army.mil/software/hec-ras/) (Checked: 2026-10-10)
+  - [W3C ARIA Table Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/table/) (Checked: 2026-10-10)
+- **Verification Status:** `VERIFIED` - Hydraulic routing equations and ARIA table structures verified locally.
+
 
 ### Project 04 — Diagnostic Liquidity
 - **Domain:** Algorithmic crop subsidy & mobile image triage.
