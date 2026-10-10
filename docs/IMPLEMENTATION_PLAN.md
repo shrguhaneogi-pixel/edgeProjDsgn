@@ -34,7 +34,7 @@ flowchart TD
     - Production build: `npm run build`
     - Typecheck: `npm run lint` (`tsc --noEmit`)
 - **Phase 3 Build Stage Roadmap:**
-  - Stage A: Interaction Spec & State Model Schema Definition.
+  - Stage A: Interaction Spec & State Model Schema Definition `[COMPLETED]`. Defined `ScrubberState`, `AssetExposureState`, `TriggerEvaluationState`, `PayoutLifecycleState`, and `AppState` in `src/types/stateModel.ts`. Implemented `appReducer.ts` with pure transitions (`SET_CHECKPOINT_HOUR`, `SELECT_SCENARIO`, `SELECT_ASSET`, `TOGGLE_PLAYBACK`, `EVALUATE_TRIGGER`, `ADVANCE_PAYOUT_STEP`, `RESET_STATE`) and `calculateDistanceKm` Haversine formula utility.
   - Stage B: Canvas 2D Signature Prototype (Storm track, spline interpolation, scrubber).
   - Stage C: Deterministic Data Engine (Category 2 vs Category 4 scenarios).
   - Stage D: Complete System States (Loading, Offline Banner, Error, Mobile Stack, ARIA Table Fallback).

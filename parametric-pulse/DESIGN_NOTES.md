@@ -116,10 +116,28 @@ flowchart TD
 
 ---
 
-## 12. Interaction Specifications
-- **Scrubber Drag/Key:** Updating slider value recalculates track position, computes distance to selected asset, and evaluates trigger formula instantly.
-- **Node Click:** Clicking any forecast node on the canvas snaps scrubber to that checkpoint timestamp.
-- **Scenario Toggle:** Instant state transition resetting telemetry, recalculating rule compliance, and triggering state machine animation.
+## 12. Interaction Specifications & Stage A State Engine Happy Paths
+- **Scrubber Drag/Key (`SET_CHECKPOINT_HOUR`):** Updating slider value recalculates track position, computes Haversine distance to selected asset, and evaluates trigger formula instantly.
+- **Scenario Switcher (`SELECT_SCENARIO`):** Resets scrubber to T+0h, loads scenario assets and track checkpoints, re-evaluates rule compliance, and resets payout lifecycle state to `IDLE`.
+- **Asset Selection (`SELECT_ASSET`):** Updates target asset telemetry, recalculates distance matrix, updates hazard radius & insured value, and re-evaluates trigger status.
+- **Playback Toggle (`TOGGLE_PLAYBACK`):** Toggles automated timeline playback (T+0h to T+48h).
+- **Trigger Evaluator (`EVALUATE_TRIGGER`):** Evaluates $V_{max} \ge 130\text{ kts} \land \text{Distance} \le 45\text{ km}$ across all checkpoints up to current hour. If satisfied and payout state is `IDLE`, auto-initiates payout sequence.
+- **Payout Machine (`ADVANCE_PAYOUT_STEP`):** Advances state machine sequentially: `IDLE` $\rightarrow$ `EVALUATING` $\rightarrow$ `TRIGGERED` $\rightarrow$ `LIQUIDITY_LOCKED` $\rightarrow$ `PAYOUT_DISPATCHED` $\rightarrow$ `CONFIRMED`.
+- **Reset Workspace (`RESET_STATE`):** Resets state to clean initial scenario state.
+
+### Stage A State Engine Schemas & Contracts (`src/types/stateModel.ts`)
+- `ScrubberState`: `{ hour, timestamp, activeCheckpoint, distanceToSelectedAsset, isPlaying }`
+- `AssetExposureState`: `{ selectedAsset, allAssets, hazardRadius, exposureUsd }`
+- `TriggerEvaluationState`: `{ rule, isSatisfied, maxWindObserved, minDistanceObserved, evaluationDetails }`
+- `PayoutLifecycleState`: `{ status: 'IDLE' | 'EVALUATING' | 'TRIGGERED' | 'LIQUIDITY_LOCKED' | 'PAYOUT_DISPATCHED' | 'CONFIRMED', eventHistory: PayoutEvent[] }`
+- `AppState`: Top-level composite state for React `useReducer`.
+
+### Stage A Happy Path Sequence
+1. **Initial Load (Scenario B - Cat 4 Landfall):** `getInitialState()` loads Category 4 scenario, sets T+0h, status `IDLE`, Port Aurora Harbor Authority selected ($15,000,000 USD insured).
+2. **Timeline Scrubbing to T+24h:** Dispatch `SET_CHECKPOINT_HOUR(24)`. Active checkpoint updates to (25.75°N, 80.15°W, 135 kts, 928 hPa). Haversine distance calculated as 18.2 km.
+3. **Trigger Evaluation:** `computeTriggerEvaluation()` detects $V_{max} = 135\text{ kts} \ge 130\text{ kts}$ and $d = 18.2\text{ km} \le 45\text{ km}$. `isSatisfied` becomes `true`. State auto-transitions to `EVALUATING`.
+4. **Payout Execution:** Dispatch `ADVANCE_PAYOUT_STEP` 4 times to step through `TRIGGERED` $\rightarrow$ `LIQUIDITY_LOCKED` $\rightarrow$ `PAYOUT_DISPATCHED` $\rightarrow$ `CONFIRMED`. Event log appends timestamped telemetry and mock txHash `0x3f9e...b8a1`.
+5. **Scenario Toggle (Scenario A - Cat 2 Offshore):** Dispatch `SELECT_SCENARIO('scenario-cat2')`. Resets scrubber to T+0h, payout to `IDLE`. Scrubbing to T+18h yields $V_{max} = 90\text{ kts} < 130\text{ kts}$ and $d = 71.3\text{ km} > 45\text{ km}$. `isSatisfied` remains `false`.
 
 ---
 

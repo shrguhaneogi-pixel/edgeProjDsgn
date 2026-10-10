@@ -15,7 +15,7 @@ This matrix tracks the validation status of every stage across all five engineer
 
 | Project | Phase 0 Repo Audit | Phase 1 Design Spec | Phase 2 Arch Setup | Stage A Interaction | Stage B Signature Prototype | Stage C Demo Data | Stage D Complete States | Stage E Design Polish | Stage F Integration & Tests | Stage G Final Release |
 |---|---|---|---|---|---|---|---|---|---|---|
-| **01 Parametric Pulse** | PASS | PASS | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
+| **01 Parametric Pulse** | PASS | PASS | PASS | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
 | **02 Barter Bridge** | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
 | **03 Sacrificial Pathways** | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
 | **04 Diagnostic Liquidity** | PASS | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
@@ -41,5 +41,14 @@ This matrix tracks the validation status of every stage across all five engineer
 - **Scaffolded & Installed:** Built `parametric-pulse/package.json`, `tsconfig.json`, `vite.config.ts`, `index.html`, `src/types/index.ts`, `src/main.tsx`, and `src/App.tsx`. Successfully ran `npm install` (71 packages audited).
 - **Verification Commands Executed:** `npm run lint` (`tsc --noEmit`) PASSED clean; `npm run build` (`vite build`) PASSED clean in 5.55s.
 - **Result:** `PASS`
+
+### Phase 3 Stage A Evidence Summary (01 Parametric Pulse)
+- **State Schemas & Models Defined:** Created [`parametric-pulse/src/types/stateModel.ts`](file:///c:/project/edgeProjDsgn/parametric-pulse/src/types/stateModel.ts) defining `ScrubberState`, `AssetExposureState`, `TriggerEvaluationState`, `PayoutLifecycleState`, `AppState`, and `AppAction` union type.
+- **State Reducer & Math Utility Implemented:** Created [`parametric-pulse/src/state/appReducer.ts`](file:///c:/project/edgeProjDsgn/parametric-pulse/src/state/appReducer.ts) with pure handlers for `SET_CHECKPOINT_HOUR`, `SELECT_SCENARIO`, `SELECT_ASSET`, `TOGGLE_PLAYBACK`, `EVALUATE_TRIGGER`, `ADVANCE_PAYOUT_STEP`, `RESET_STATE`, and Haversine distance utility function `calculateDistanceKm`.
+- **Deterministic Demo Data:** Created [`parametric-pulse/src/data/demoScenarios.ts`](file:///c:/project/edgeProjDsgn/parametric-pulse/src/data/demoScenarios.ts) providing Category 2 offshore (Non-Qualifying) and Category 4 landfall (Qualifying) scenario tracks.
+- **Design & Plan Specs Updated:** [`parametric-pulse/DESIGN_NOTES.md`](file:///c:/project/edgeProjDsgn/parametric-pulse/DESIGN_NOTES.md) and [`docs/IMPLEMENTATION_PLAN.md`](file:///c:/project/edgeProjDsgn/docs/IMPLEMENTATION_PLAN.md) updated with interaction specs and state happy paths.
+- **Verification Commands Executed:** `npm run lint` (`tsc --noEmit`) PASSED clean; `npm run build` (`vite build`) PASSED clean in 4.80s.
+- **Result:** `PASS`
+
 
 

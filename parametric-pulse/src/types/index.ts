@@ -51,3 +51,6 @@ export interface CycloneScenario {
   assets: CoastalAsset[];
   rule: ParametricRule;
 }
+
+export * from './stateModel';
+
