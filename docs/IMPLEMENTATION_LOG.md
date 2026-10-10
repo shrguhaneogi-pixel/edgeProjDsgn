@@ -189,6 +189,7 @@
 ---
 ### Phase 3 Stage F: Integration & Unit Testing (Sacrificial Pathways)
 **Completion Date:** 2026-10-10  
+**Commit:** `b31d6e0`  
 - **Unit Testing & Test Modal:**
   - [`sacrificial-pathways/src/utils/flowCalculator.test.ts`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/utils/flowCalculator.test.ts): Programmatic unit test suite verifying Manning's velocity equation, weir channel diversion flow, sector risk scoring, and depth reduction deltas.
   - [`sacrificial-pathways/src/components/TestRunnerModal.tsx`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/components/TestRunnerModal.tsx): Interactive in-app test runner modal connected to top action bar button and shortcut <kbd>T</kbd>.
