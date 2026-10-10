@@ -168,6 +168,7 @@
 ---
 ### Phase 3 Stage D: Complete System States & Accessibility (Sacrificial Pathways)
 **Completion Date:** 2026-10-10  
+**Commit:** `0ec6cae`  
 - **Accessible Table & System States:**
   - [`sacrificial-pathways/src/components/AccessibleElevationTable.tsx`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/components/AccessibleElevationTable.tsx): Built ARIA table (`role="table"`) fallback listing all 4 terrain sectors with elevation, water depth, exposed asset valuation, risk score percent, and live region announcements (`aria-live="polite"`).
   - [`sacrificial-pathways/src/App.tsx`](file:///c:/project/edgeProjDsgn/sacrificial-pathways/src/App.tsx): Implemented loading heightmap raster skeleton, offline status banner (`navigator.onLine`), runtime error fallback card, and responsive mode toggles.
