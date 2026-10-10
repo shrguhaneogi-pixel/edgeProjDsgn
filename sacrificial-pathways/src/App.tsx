@@ -15,7 +15,7 @@ export default function App() {
   const { selectedSectorId, sectorRisks, telemetry, gateStatus, dischargeM3PerSec } = state;
   const selectedSector = sectorRisks.find(r => r.sectorId === selectedSectorId);
 
-  // Simulate initial heightmap raster loading & network offline listener
+  // Keyboard navigation & media query listener for reduced motion & online state
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -27,12 +27,41 @@ export default function App() {
     window.addEventListener('online', handleOnline);
     window.addEventListener('offline', handleOffline);
 
+    // Reduced motion media query listener
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mediaQuery.matches && state.isAnimating) {
+      dispatch({ type: 'TOGGLE_ANIMATION' });
+    }
+
+    // Keyboard Shortcuts Listener
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const activeTag = document.activeElement?.tagName.toLowerCase();
+      if (activeTag === 'input' || activeTag === 'textarea' || activeTag === 'select') return;
+
+      if (e.code === 'Digit1') {
+        dispatch({ type: 'SELECT_SCENARIO', payload: 'scenario-baseline' });
+      } else if (e.code === 'Digit2') {
+        dispatch({ type: 'SELECT_SCENARIO', payload: 'scenario-bypass-active' });
+      } else if (e.code === 'Digit3') {
+        dispatch({ type: 'SELECT_SCENARIO', payload: 'scenario-extreme-surge' });
+      } else if (e.code === 'KeyG') {
+        dispatch({ type: 'TOGGLE_SACRIFICIAL_GATE' });
+      } else if (e.code === 'KeyA') {
+        dispatch({ type: 'TOGGLE_ACCESSIBILITY_VIEW' });
+      } else if (e.code === 'KeyR') {
+        dispatch({ type: 'RESET_SIMULATION' });
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
     return () => {
       clearTimeout(timer);
       window.removeEventListener('online', handleOnline);
       window.removeEventListener('offline', handleOffline);
+      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [state.isAnimating]);
 
   if (hasError) {
     return (
@@ -82,13 +111,22 @@ export default function App() {
               borderRadius: '6px',
               cursor: 'pointer',
               fontSize: '0.8rem',
-              fontWeight: 600
+              fontWeight: 600,
+              outlineOffset: '2px'
             }}
           >
-            {state.isAccessibilityView ? 'Switch to Canvas View' : 'Accessible Table Fallback'}
+            {state.isAccessibilityView ? 'Switch to Canvas View (Key: A)' : 'Accessible Table Fallback (Key: A)'}
           </button>
         </div>
       </header>
+
+      {/* Keyboard Shortcuts Legend Bar */}
+      <div style={{ marginBottom: '1.25rem', padding: '0.5rem 1rem', background: '#161B22', borderRadius: '6px', border: '1px solid #30363D', display: 'flex', gap: '1.5rem', fontSize: '0.75rem', color: '#8B949E', flexWrap: 'wrap' }}>
+        <span><kbd style={{ background: '#0D1117', border: '1px solid #30363D', padding: '1px 4px', borderRadius: '3px', color: '#F0F6FC' }}>1-3</kbd> Select Scenarios</span>
+        <span><kbd style={{ background: '#0D1117', border: '1px solid #30363D', padding: '1px 4px', borderRadius: '3px', color: '#FF3D00' }}>G</kbd> Toggle Sacrificial Gate</span>
+        <span><kbd style={{ background: '#0D1117', border: '1px solid #30363D', padding: '1px 4px', borderRadius: '3px', color: '#00A3FF' }}>A</kbd> Toggle Accessible Table</span>
+        <span><kbd style={{ background: '#0D1117', border: '1px solid #30363D', padding: '1px 4px', borderRadius: '3px', color: '#8B949E' }}>R</kbd> Reset Simulation</span>
+      </div>
 
       {/* Loading Skeleton */}
       {isLoading ? (
