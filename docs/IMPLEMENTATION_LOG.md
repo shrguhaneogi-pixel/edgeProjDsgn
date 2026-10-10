@@ -92,6 +92,16 @@
 - **Deterministic Data Module:** Created [`barter-bridge/src/data/demoDistrictData.ts`](file:///c:/project/edgeProjDsgn/barter-bridge/src/data/demoDistrictData.ts) defining 5 municipal projects, 5 pairwise comparison steps, 12 AST decision nodes, and 250 seeded public response records.
 - **Validation Matrix:** Updated Stage A for The Barter Bridge to `PASS`.
 
+### Phase 3 Stage B: Signature Prototype Components (The Barter Bridge)
+**Completion Date:** 2026-10-10  
+**Commit:** `b061fe6`  
+- **Signature Components Built:**
+  - [`barter-bridge/src/components/PairwiseChoiceCard.tsx`](file:///c:/project/edgeProjDsgn/barter-bridge/src/components/PairwiseChoiceCard.tsx): Neo-Brutalist forced-choice survey component comparing two projects at a time with category tags, $USD costs, and impact summaries.
+  - [`barter-bridge/src/components/ASTCanvasSVG.tsx`](file:///c:/project/edgeProjDsgn/barter-bridge/src/components/ASTCanvasSVG.tsx): Interactive SVG AST decision tree visualizer rendering Root, Operator, Category, and Leaf nodes with connecting vector edges.
+  - [`barter-bridge/src/components/ASTNodeInspector.tsx`](file:///c:/project/edgeProjDsgn/barter-bridge/src/components/ASTNodeInspector.tsx): Side drawer inspecting selected AST node attributes and adjusting category policy weights.
+  - [`barter-bridge/src/components/RankingChart.tsx`](file:///c:/project/edgeProjDsgn/barter-bridge/src/components/RankingChart.tsx): Bar chart comparing baseline public preference rankings with policy simulation overrides and rank diff indicators (`+1`, `-1`).
+- **Validation Matrix:** Updated Stage B for The Barter Bridge to `PASS`.
+
 ---
-**Phase 3 Stage A Status (The Barter Bridge):** COMPLETE (`7860661dca0c0aa06d4cd70e0f22fc27ae5ece18`). Waiting for user approval to execute Phase 3 Stage B for Project 02 (The Barter Bridge).
+**Phase 3 Stage B Status (The Barter Bridge):** COMPLETE (`b061fe6`). Waiting for user approval to execute Phase 3 Stage C for Project 02 (The Barter Bridge).
 
