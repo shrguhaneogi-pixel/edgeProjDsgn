@@ -10,6 +10,7 @@ import { TriggerRuleCard } from './components/TriggerRuleCard';
 import { PayoutStateMachine } from './components/PayoutStateMachine';
 import { AccessibleTableFallback } from './components/AccessibleTableFallback';
 import { TestRunnerModal } from './components/TestRunnerModal';
+import { EcosystemNav } from './components/EcosystemNav';
 import { AlertCircle } from 'lucide-react';
 
 export default function App() {
@@ -64,6 +65,7 @@ export default function App() {
 
   return (
     <div style={{ minHeight: '100vh', background: '#06080F', color: '#F8FAFC', display: 'flex', flexDirection: 'column' }}>
+      <EcosystemNav currentApp="parametric-pulse" />
       {/* Header Navigation */}
       <Header
         scenarios={state.scenarios}

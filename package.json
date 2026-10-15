@@ -1,0 +1,24 @@
+{
+  "name": "edge-systems-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Standardized, linked monorepo for the five Edge Systems applications",
+  "type": "module",
+  "scripts": {
+    "build:unified": "node scripts/build-unified.mjs",
+    "build:all": "npm run build --prefix barter-bridge && npm run build --prefix diagnostic-liquidity && npm run build --prefix horizon-scrape && npm run build --prefix parametric-pulse && npm run build --prefix sacrificial-pathways",
+    "install:all": "npm install --prefix barter-bridge && npm install --prefix diagnostic-liquidity && npm install --prefix horizon-scrape && npm install --prefix parametric-pulse && npm install --prefix sacrificial-pathways",
+    "lint:all": "npm run lint --prefix barter-bridge && npm run lint --prefix diagnostic-liquidity && npm run lint --prefix horizon-scrape && npm run lint --prefix parametric-pulse && npm run lint --prefix sacrificial-pathways"
+  },
+  "keywords": [
+    "edge-systems",
+    "vite",
+    "react",
+    "typescript",
+    "monorepo",
+    "climate",
+    "civic"
+  ],
+  "author": "Edge Systems Team",
+  "license": "MIT"
+}

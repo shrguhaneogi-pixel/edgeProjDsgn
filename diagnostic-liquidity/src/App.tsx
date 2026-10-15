@@ -7,6 +7,7 @@ import { DiagnosticConfidenceCard } from './components/DiagnosticConfidenceCard'
 import { ClaimSettlementCard } from './components/ClaimSettlementCard';
 import { AccessibleCropCaseReport } from './components/AccessibleCropCaseReport';
 import { TestRunnerModal } from './components/TestRunnerModal';
+import { EcosystemNav } from './components/EcosystemNav';
 
 export default function App() {
   const [state, dispatch] = useReducer(appReducer, undefined, () => createInitialState());
@@ -100,6 +101,7 @@ export default function App() {
 
   return (
     <div style={appContainerStyle}>
+      <EcosystemNav currentApp="diagnostic-liquidity" />
       {/* Offline Alert Banner (if offline) */}
       {!isOnline && (
         <div style={offlineBannerStyle} role="alert">

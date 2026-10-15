@@ -1,0 +1,9 @@
+{
+  "rewrites": [
+    { "source": "/barter-bridge/:path*", "destination": "https://barter-bridge.vercel.app/barter-bridge/:path*" },
+    { "source": "/diagnostic-liquidity/:path*", "destination": "https://diagnostic-liquidity.vercel.app/diagnostic-liquidity/:path*" },
+    { "source": "/horizon-scrape/:path*", "destination": "https://horizon-scrape.vercel.app/horizon-scrape/:path*" },
+    { "source": "/parametric-pulse/:path*", "destination": "https://parametric-pulse.vercel.app/parametric-pulse/:path*" },
+    { "source": "/sacrificial-pathways/:path*", "destination": "https://sacrificial-pathways.vercel.app/sacrificial-pathways/:path*" }
+  ]
+}

@@ -5,6 +5,7 @@ import { FlowTelemetryCard } from './components/FlowTelemetryCard';
 import { RouteSelector } from './components/RouteSelector';
 import { TerrainCanvas2D } from './components/TerrainCanvas2D';
 import { TestRunnerModal } from './components/TestRunnerModal';
+import { EcosystemNav } from './components/EcosystemNav';
 import { appReducer, createInitialState } from './state/appReducer';
 
 export default function App() {
@@ -83,8 +84,10 @@ export default function App() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0D1117', color: '#F0F6FC', fontFamily: 'system-ui, -apple-system, sans-serif', padding: '1.5rem' }}>
-      {/* Offline Banner */}
+    <div style={{ minHeight: '100vh', background: '#0D1117', color: '#F0F6FC', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+      <EcosystemNav currentApp="sacrificial-pathways" />
+      <div style={{ padding: '1.5rem' }}>
+        {/* Offline Banner */}
       {isOffline && (
         <div style={{ background: '#FFAB00', color: '#0D1117', padding: '0.4rem 1rem', borderRadius: '6px', fontSize: '0.8rem', fontWeight: 600, marginBottom: '1rem', textAlign: 'center' }}>
           Network Connection Offline — Running on Local Deterministic GIS Data & Hydraulic Engine
@@ -217,6 +220,7 @@ export default function App() {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 }

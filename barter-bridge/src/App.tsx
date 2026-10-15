@@ -2,6 +2,7 @@ import { useReducer } from 'react';
 import { initialAppState, appReducer } from './state/appReducer';
 import { demoComparisons } from './data/demoDistrictData';
 import { Header } from './components/Header';
+import { EcosystemNav } from './components/EcosystemNav';
 import { PairwiseChoiceCard } from './components/PairwiseChoiceCard';
 import { PersonalSummary } from './components/PersonalSummary';
 import { ASTCanvasSVG } from './components/ASTCanvasSVG';
@@ -27,6 +28,9 @@ export default function App() {
 
   return (
     <div style={{ minHeight: '100vh', background: '#F9F8F6', color: '#18181B', display: 'flex', flexDirection: 'column' }}>
+      {/* Ecosystem Navigation */}
+      <EcosystemNav currentApp="barter-bridge" />
+
       {/* Navigation Header */}
       <Header
         viewMode={state.viewMode}
